@@ -1,0 +1,9 @@
+﻿<Window x:Name="mainMenuWindow" x:Class="NETProject.MainMenuWindow"
+        WindowStartupLocation="CenterScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="mainMenuWindow" Height="637.075" Width="643">
+    <Grid>
+        
+    </Grid>
+</Window>

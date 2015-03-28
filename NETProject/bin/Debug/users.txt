@@ -1,0 +1,3 @@
+1;Admin;pxlyolo;2;5000;15365
+2;Leerkracht;pxlyolo;1;2000;50
+3;Leerling;pxlyolo;0;2000;80
