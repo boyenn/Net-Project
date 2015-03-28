@@ -5,7 +5,11 @@ winexe
 C#
 .cs
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\
+=======
+C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\
+>>>>>>> origin/master
 =======
 C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\
 >>>>>>> origin/master
@@ -14,10 +18,17 @@ none
 false
 DEBUG;TRACE
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Thijs\Desktop\Net-Project\NETProject\App.xaml
 2-639884540
 
 11-17839895
+=======
+C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\App.xaml
+2-639884540
+
+111174845399
+>>>>>>> origin/master
 =======
 C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\App.xaml
 2-639884540
