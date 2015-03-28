@@ -29,11 +29,9 @@ C:\Users\Boyen\Desktop\NETProject\NETProject\obj\Debug\NETProject.g.resources
 C:\Users\Boyen\Desktop\NETProject\NETProject\obj\Debug\NETProject.Properties.Resources.resources
 C:\Users\Boyen\Desktop\NETProject\NETProject\obj\Debug\NETProject.csproj.GenerateResource.Cache
 <<<<<<< HEAD
-<<<<<<< HEAD
 C:\Users\Thijs\Desktop\Net-Project\NETProject\bin\Debug\NETProject.exe.config
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject.exe
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject.pdb
-=======
 =======
 >>>>>>> origin/master
 C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\bin\Debug\NETProject.exe.config
@@ -51,7 +49,15 @@ C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\NETProje
 C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\NETProject.g.resources
 C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\NETProject.Properties.Resources.resources
 C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\NETProject.csproj.GenerateResource.Cache
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+C:\Users\Thijs\Desktop\Net-Project\NETProject\bin\Debug\NETProject.exe
+C:\Users\Thijs\Desktop\Net-Project\NETProject\bin\Debug\NETProject.pdb
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject.csprojResolveAssemblyReference.cache
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\MainMenuWindow.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\MainWindow.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\MainMenuWindow.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\MainWindow.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\App.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject_MarkupCompile.cache
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject.g.resources
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject.Properties.Resources.resources
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\NETProject.csproj.GenerateResource.Cache

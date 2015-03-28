@@ -32,8 +32,9 @@ namespace NETProject
             userList = new List<User>();
             ReadTextFile();
             
-        }
-
+        }//tweede keer steeds wel wtf
+        //iedere keer da ge iets verandert werkt het alleen de tweede keer idk why
+        
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             if (loginTextbox.Text.All(Char.IsLetterOrDigit) && passwordBox.Password.All(Char.IsLetterOrDigit))
@@ -41,7 +42,7 @@ namespace NETProject
 
                 foreach (User user in userList)
                 {
-
+                        
                     if (string.Equals(loginTextbox.Text, user.UserName, StringComparison.OrdinalIgnoreCase))
                     {
 
@@ -50,13 +51,22 @@ namespace NETProject
                             currentUser = user;
 
                             MainMenuWindow mainMenu = new MainMenuWindow();
-                        
+
                             mainMenu.Show();
-                            this.Close();
+                            return;
                         }
                         else {
+                          
+                            //ok wtf
                             MessageBox.Show("Foutief wachtwoord ingegeven.");
+                            return;
                         }
+                    }
+                    else
+                    {
+                      
+                        MessageBox.Show("Foutieve gebruikersnaam ingegeven.");
+                        return;
                     }
                 }
             }
