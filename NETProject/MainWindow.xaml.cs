@@ -36,7 +36,7 @@ namespace NETProject
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (loginTextbox.Text.All(Char.IsLetterOrDigit) && passwordBox.Password.All(Char.IsLetterOrDigit) && !loginTextbox.Text.Equals("") && !passwordBox.Password.Equals(""))
+            if (loginTextbox.Text.All(Char.IsLetterOrDigit) && passwordBox.Password.All(Char.IsLetterOrDigit))
             {
 
                 foreach (User user in userList)
@@ -71,7 +71,7 @@ namespace NETProject
 
             string line = "";
             string[] words = new string[6];
-            string fileToSearch = "users.txt";
+            string fileToSearch = "Resources/Files/users.txt";
         
             try
             {
