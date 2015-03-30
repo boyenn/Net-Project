@@ -4,11 +4,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="mainWindow" Height="350" Width="520">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <TextBox x:Name="loginTextbox" MaxLength="20" HorizontalAlignment="Left" Height="34" Margin="155,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="18" TextChanged="loginTextbox_TextChanged"/>
         <PasswordBox x:Name="passwordBox" MaxLength="20" HorizontalAlignment="Left" Margin="155,187,0,0" VerticalAlignment="Top" Width="200" Height="34" FontSize="18"/>
         <Label x:Name="usernameLabel" Content="Gebruikersnaam:" HorizontalAlignment="Left" Margin="155,90,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="passwordLabel" Content="Paswoord: " HorizontalAlignment="Left" Margin="155,158,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="projectNaamLabel" Content="Insert Project Name Here" HorizontalAlignment="Left" Margin="119,29,0,0" VerticalAlignment="Top" Height="43" Width="283" FontSize="24"/>
         <Button x:Name="loginButton" Content="Meld aan" HorizontalAlignment="Left" Margin="155,226,0,0" VerticalAlignment="Top" Width="200" Height="32" Click="loginButton_Click"/>
+        <Image x:Name="aaa" HorizontalAlignment="Left" Height="193" Margin="10,28,0,0" VerticalAlignment="Top" Width="459"  Grid.ColumnSpan="1"/>
     </Grid>
 </Window>

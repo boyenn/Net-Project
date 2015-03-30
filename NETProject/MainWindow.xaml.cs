@@ -25,13 +25,28 @@ namespace NETProject
         private IList<User> userList;
         private static User currentUser;
 
-        
+        public  BitmapImage bmprel(string relativepath)
+        {
+            Uri x = new Uri(System.IO.Path.GetFullPath(relativepath), UriKind.Absolute);
+              return new BitmapImage(x);
+        }
         public MainWindow()
         {
             InitializeComponent();
             userList = new List<User>();
+
             ReadTextFile();
+
+            aaa.Source = bmprel("Resources/Images/PxlLogo.png");
+            aaa.MouseDown += aaa_MouseDown; // empty function 
             
+        }
+
+        void aaa_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+           //Example voor mouseclick 
+
+
         }//tweede keer steeds wel wtf
         //iedere keer da ge iets verandert werkt het alleen de tweede keer idk why
         
