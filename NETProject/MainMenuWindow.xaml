@@ -4,16 +4,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="mainMenuWindow" Height="637.075" Width="643">
     <Grid>
-        <TabControl HorizontalAlignment="Left"  Margin="30,37,0,0" VerticalAlignment="Top">
+        <TabControl HorizontalAlignment="Left"  Margin="0,-23,0,0" VerticalAlignment="Top" Height="632" Width="635">
             <TabItem Header="TabItem" >
-                <ListBox Name="lst" Height="400">
-                   
-
-                </ListBox>
+                <ListBox Name="lst" Height="400"  Margin="0,0,0,0"/>
             </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            <Label Content="Label" Margin="262,250,228,297"/>
+
         </TabControl>
 
     </Grid>
