@@ -23,6 +23,15 @@ namespace NETProject
         {
             InitializeComponent();
             MessageBox.Show(MainWindow.CurrentUser.UserName);
+      
+            
+            for (int i = 0; i < 500; i++)
+            {
+                 UserControl1 uc = new UserControl1("Resources/Images/pxlLogo.png", "PXL JONGE");
+                 uc.grid.Background = new SolidColorBrush(Color.FromRgb((byte)(i%255),(byte) (255-(i%255)), (byte)(i%255)));
+                 lst.Items.Add(uc);
+            }
+            
         }
     }
 }

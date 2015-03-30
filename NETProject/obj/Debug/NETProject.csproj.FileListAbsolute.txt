@@ -76,3 +76,5 @@ C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject_Ma
 C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject.g.resources
 C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject.Properties.Resources.resources
 C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject.csproj.GenerateResource.Cache
+C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\UserControl1.baml
+C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\UserControl1.g.cs
