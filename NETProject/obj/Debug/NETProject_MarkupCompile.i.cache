@@ -4,17 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\
+=======
+C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\obj\Debug\
+>>>>>>> origin/master
 NETProject
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Thijs\Desktop\Net-Project\NETProject\App.xaml
 2-639884540
 
 11-17839895
+=======
+C:\Users\Jasper\Desktop\School\Project\Net-Project\NETProject\App.xaml
+3-738310256
+
+12-547666110
+>>>>>>> origin/master
 12-1401562060
-MainMenuWindow.xaml;MainWindow.xaml;
+MainMenuWindow.xaml;MainWindow.xaml;UserControl1.xaml;
 
 False
 

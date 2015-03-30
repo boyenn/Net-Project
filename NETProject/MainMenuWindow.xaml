@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="mainMenuWindow" Height="637.075" Width="716">
     <Grid>
+<<<<<<< HEAD
         
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="631" Margin="0,-24,0,0" VerticalAlignment="Top" Width="708">
             <TabItem x:Name="mainMenuTab" Header="TabItem">
@@ -39,6 +40,18 @@
         <Label x:Name="highscoreLabel2" Content="Label" HorizontalAlignment="Left" Margin="539,35,0,0" VerticalAlignment="Top"/>
 
         
+=======
+        <TabControl HorizontalAlignment="Left"  Margin="0,-23,0,0" VerticalAlignment="Top" Height="632" Width="635">
+            <TabItem Header="TabItem" >
+                <ListBox Name="lst" Height="400"  Margin="0,0,0,0"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <Label Content="Label" Margin="262,250,228,297"/>
+
+        </TabControl>
+>>>>>>> origin/master
 
     </Grid>
 </Window>

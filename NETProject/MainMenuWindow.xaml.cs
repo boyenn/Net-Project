@@ -22,6 +22,7 @@ namespace NETProject
         public MainMenuWindow()
         {
             InitializeComponent();
+<<<<<<< HEAD
 
             mainMenuButton.Click += button_Click;
             exercisesButton.Click += button_Click;
@@ -32,6 +33,21 @@ namespace NETProject
             setPersonalInfo();
 
            
+=======
+            MessageBox.Show(MainWindow.CurrentUser.UserName);
+
+            UserControl1 mainMenuUserControl = new UserControl1("Resources/Images/1.png", "");
+            UserControl1 game1UserControl = new UserControl1("Resources/Images/2.jpg", "Game 1");
+            UserControl1 game2UserControl = new UserControl1("Resources/Images/3.jpg", "Game 2");
+            UserControl1 game3UserControl = new UserControl1("Resources/Images/4.jpg", "Game 3");
+
+            lst.Items.Add(mainMenuUserControl);
+            lst.Items.Add(game1UserControl);
+            lst.Items.Add(game2UserControl);
+            lst.Items.Add(game3UserControl);
+                 
+            
+>>>>>>> origin/master
         }
 
         void button_Click(object sender, RoutedEventArgs e)
