@@ -54,7 +54,7 @@ namespace NETProject
         {
             if (loginTextbox.Text.All(Char.IsLetterOrDigit) && passwordBox.Password.All(Char.IsLetterOrDigit))
             {
-
+                Boolean fouteGebruikersnaam = false;
                 foreach (User user in userList)
                 {
                         
@@ -64,10 +64,11 @@ namespace NETProject
                         if (passwordBox.Password.Equals(user.UserPassword))
                         {
                             currentUser = user;
-
+                           
                             MainMenuWindow mainMenu = new MainMenuWindow();
-
+                           
                             mainMenu.Show();
+                            this.Close();
                             return;
                         }
                         else {
@@ -79,10 +80,13 @@ namespace NETProject
                     }
                     else
                     {
-                      
-                        MessageBox.Show("Foutieve gebruikersnaam ingegeven.");
-                        return;
+                        fouteGebruikersnaam = true;
+                        
                     }
+                }
+                if (fouteGebruikersnaam) {
+                    MessageBox.Show("Foutieve gebruikersnaam ingegeven.");
+                   
                 }
             }
             else {
@@ -130,6 +134,7 @@ namespace NETProject
             set { currentUser = value; }
         }
 
+        
         private void loginTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

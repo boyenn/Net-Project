@@ -30,9 +30,25 @@ namespace NETProject
             get { return userName; }
         }
 
+        public int UserPoints
+        {
+            get { return userPoints; }
+        }
+
+        public int UserHighscore
+        {
+            get { return userHighscore; }
+        }
+
         public string UserPassword
         {
             get { return userPassword; }
         }
+
+        public int UserType
+        {
+            get { return userType; }
+        }
+
     }
 }
