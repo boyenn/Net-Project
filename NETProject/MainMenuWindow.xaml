@@ -18,12 +18,66 @@
             </TabItem>
             <TabItem x:Name="manageTab" Header="TabItem">
                 <Grid Background="White">
+                    <Button x:Name="excercisesManagementButton" Content="Beheer Oefeningen" HorizontalAlignment="Left" Margin="-2,87,0,0" VerticalAlignment="Top" Width="121" Height="60" RenderTransformOrigin="1.584,0.137" />
+                    <Button x:Name="pupilManagementButton" Content="Beheer Leerlingen" HorizontalAlignment="Left" Margin="-2,147,0,0" VerticalAlignment="Top" Width="121" Height="63"/>
+                    <Button x:Name="teacherManagementButton" Content="Beheer Leerkrachten" HorizontalAlignment="Left" Margin="-2,210,0,0" VerticalAlignment="Top" Width="121" Height="61"/>
+
+                    <TabControl HorizontalAlignment="Left" Height="521" Margin="124,78,0,0"  BorderThickness="0" VerticalAlignment="Top" Width="574" Background="#FFE5E5E5">
+                        <TabControl.Resources>
+
+                            <Style TargetType="TabItem">
+
+                                <Setter Property="Template">
+
+                                    <Setter.Value>
+
+                                        <ControlTemplate TargetType="TabItem">
+
+                                        </ControlTemplate>
+
+                                    </Setter.Value>
+
+                                </Setter>
+
+                            </Style>
+
+                        </TabControl.Resources>
+
+                        <TabItem Name="excerciseManagementTab" Header="TabItem">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+
+                        <TabItem Name="pupilManagementTab" Header="TabItem">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid Background="#FFE5E5E5" Margin="0,-2,0,2">
+                                    <DataGrid Name="dataGridPupils" Margin="10,10,10,40" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Naam" Width="225" Binding="{Binding Path=Name1}" />
+                                            <DataGridTextColumn Header="Behaalde punten" Width="110" Binding="{Binding Path=Points1}" />
+                                            <DataGridTextColumn Header="Highscore" Width="90" Binding="{Binding Path=Highscore1}" />
+                                            <DataGridTemplateColumn Header="Verwijder Gebruiker">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Width="50">Details</Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Name="teacherManagementTab" Header="TabItem">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                    </TabControl>
                     
                 </Grid>
             </TabItem>
             
         </TabControl>
-        <Separator HorizontalAlignment="Left" Height="87" Margin="0,26,0,0" VerticalAlignment="Top" Width="708"/>
+        <Separator HorizontalAlignment="Left" Height="87" Margin="-10,35,-21,0" VerticalAlignment="Top" Width="739"/>
 
         <Button x:Name="mainMenuButton" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Height="69" />
         <Button x:Name="exercisesButton" Content="Oefeningen" HorizontalAlignment="Left" Margin="121,0,0,0" VerticalAlignment="Top" Width="116" Height="69"/>
@@ -38,7 +92,7 @@
         <Label x:Name="pointsLabel2" Content="Label" HorizontalAlignment="Left" Margin="453,35,0,0" VerticalAlignment="Top"/>
         <Label x:Name="highscoreLabel2" Content="Label" HorizontalAlignment="Left" Margin="539,35,0,0" VerticalAlignment="Top"/>
 
-        
+
 
     </Grid>
 </Window>

@@ -14,6 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+//source tabcontrol no header https://social.msdn.microsoft.com/Forums/vstudio/en-US/f500ff28-83e7-439a-ad78-be0e6a3b7587/how-to-hide-the-tab-headers-for-a-tabcontrol?forum=wpf
+//datagrid help http://www.wpftutorial.net/datagrid.html
+//http://stackoverflow.com/questions/16251327/wpf-datagrid-add-new-row
+//http://stackoverflow.com/questions/3046003/adding-a-button-to-a-wpf-datagrid
 namespace NETProject
 {
     /// <summary>
@@ -21,21 +26,20 @@ namespace NETProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private StreamReader inputStream = null;
-        private IList<User> userList;
-        private static User currentUser;
-
+     
         public  BitmapImage bmprel(string relativepath)
         {
             Uri x = new Uri(System.IO.Path.GetFullPath(relativepath), UriKind.Absolute);
               return new BitmapImage(x);
         }
+
         public MainWindow()
         {
             InitializeComponent();
-            userList = new List<User>();
+          
 
-            ReadTextFile();
+            UserSummary.ReadTextFile();
+            
 
             aaa.Source = bmprel("Resources/Images/PxlLogo.png");
             aaa.MouseDown += aaa_MouseDown; // empty function 
@@ -47,15 +51,15 @@ namespace NETProject
            //Example voor mouseclick 
 
 
-        }//tweede keer steeds wel wtf
-        //iedere keer da ge iets verandert werkt het alleen de tweede keer idk why
-        
+        }
+
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            UserSummary.WriteTextFile();
             if (loginTextbox.Text.All(Char.IsLetterOrDigit) && passwordBox.Password.All(Char.IsLetterOrDigit))
             {
                 Boolean fouteGebruikersnaam = false;
-                foreach (User user in userList)
+                foreach (User user in UserSummary.UserList)
                 {
                         
                     if (string.Equals(loginTextbox.Text, user.UserName, StringComparison.OrdinalIgnoreCase))
@@ -63,7 +67,7 @@ namespace NETProject
 
                         if (passwordBox.Password.Equals(user.UserPassword))
                         {
-                            currentUser = user;
+                            UserSummary.CurrentUser = user;
                            
                             MainMenuWindow mainMenu = new MainMenuWindow();
                            
@@ -72,8 +76,7 @@ namespace NETProject
                             return;
                         }
                         else {
-                          
-                            //ok wtf
+
                             MessageBox.Show("Foutief wachtwoord ingegeven.");
                             return;
                         }
@@ -96,49 +99,7 @@ namespace NETProject
             }
         }
 
-        public void ReadTextFile() {
-
-            string line = "";
-            string[] words = new string[6];
-            string fileToSearch = "Resources/Files/users.txt";
-        
-            try
-            {
-                inputStream = File.OpenText(fileToSearch);
-                char seperator = ';';
-
-                line = inputStream.ReadLine();
-
-                while (line != null)
-                {
-                    words = line.Split(seperator);
-
-                    userList.Add(new User(Convert.ToInt32(words[0]), words[1], words[2], Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), Convert.ToInt32(words[5])));
-
-                    line = inputStream.ReadLine();
-
-                }
-            }
-            catch (FileNotFoundException ex) {
-                MessageBox.Show("Error: Bestand niet gevonden: " + fileToSearch);
-            }
-
-            if (inputStream != null) {
-                inputStream.Close();
-            }
-        }
-
-        public static User CurrentUser
-        {
-            get { return currentUser; }
-            set { currentUser = value; }
-        }
-
-        
-        private void loginTextbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+       
 
     }
 }

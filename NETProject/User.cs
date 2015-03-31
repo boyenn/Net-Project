@@ -8,16 +8,15 @@ namespace NETProject
 {
     public class User
     {
-        private int userId, userType, userPoints, userHighscore;
+        private int userType, userPoints, userHighscore;
         private string userName, userPassword;
  
         public User() { 
 
         }
 
-        public User(int userId, string userName, string userPassword, int userType, int userPoints, int userHighscore)
+        public User(string userName, string userPassword, int userType, int userPoints, int userHighscore)
         {
-            this.userId = userId;
             this.userName = userName;
             this.userPassword = userPassword;
             this.userType = userType;

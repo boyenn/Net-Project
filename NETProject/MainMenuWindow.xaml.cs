@@ -23,18 +23,32 @@ namespace NETProject
         {
             InitializeComponent();
 
-            mainMenuButton.Click += button_Click;
-            exercisesButton.Click += button_Click;
-            manageButton.Click += button_Click;
-            logoutButton.Click += button_Click;
-
+            
+            setActionListeners();
             setVisibilityComponents();
             setPersonalInfo();
 
-           
+            var data = new DataGridPupils { Name1 = "Test1", Points1 = "Test2", Highscore1 = "Test3" };
+
+             dataGridPupils.Items.Add(data);
         }
 
-        void button_Click(object sender, RoutedEventArgs e)
+       
+        
+       
+
+        public void setActionListeners() {
+            mainMenuButton.Click += Button_Click;
+            exercisesButton.Click += Button_Click;
+            manageButton.Click += Button_Click;
+            logoutButton.Click += Button_Click;
+
+            teacherManagementButton.Click += Button2_Click;
+            pupilManagementButton.Click += Button2_Click;
+            teacherManagementButton.Click += Button2_Click;
+        }
+
+        void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)e.Source;
             switch (Convert.ToString(button.Content)) {
@@ -47,28 +61,35 @@ namespace NETProject
             }
         }
 
+        void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)e.Source;
+            switch (Convert.ToString(button.Content))
+            {
+                case "Beheer Oefeningen": excerciseManagementTab.IsSelected = true; break;
+                case "Beheer Leerlingen": pupilManagementTab.IsSelected = true; break;
+                case "Beheer Leerkrachten": teacherManagementTab.IsSelected = true; break;
+               
+            }
+        }
+
         public void setVisibilityComponents()
         {
-            if (MainWindow.CurrentUser.UserType == 0)
-            {
-                manageButton.Visibility = Visibility.Hidden;
+            switch (UserSummary.CurrentUser.UserType) {
+                case 0: manageButton.Visibility = Visibility.Hidden; break;
+                case 1: teacherManagementButton.Visibility = Visibility.Hidden; break;
+                case 2:     break;
             }
-            else
-            {
-                pointsLabel.Visibility = Visibility.Hidden;
-                highscoreLabel.Visibility = Visibility.Hidden;
-                pointsLabel2.Visibility = Visibility.Hidden;
-                highscoreLabel2.Visibility = Visibility.Hidden;
-            }
+          
         }
 
         public void setPersonalInfo() {
-            usernameLabel2.Content = MainWindow.CurrentUser.UserName;
-            pointsLabel2.Content = MainWindow.CurrentUser.UserPoints;
-            highscoreLabel2.Content = MainWindow.CurrentUser.UserHighscore;
+            usernameLabel2.Content = UserSummary.CurrentUser.UserName;
+            pointsLabel2.Content = UserSummary.CurrentUser.UserPoints;
+            highscoreLabel2.Content = UserSummary.CurrentUser.UserHighscore;
         }
 
-
+       
         
     }
 }
