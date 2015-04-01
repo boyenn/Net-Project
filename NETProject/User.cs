@@ -23,29 +23,36 @@ namespace NETProject
             this.userPoints = userPoints;
             this.userHighscore = userHighscore;
         }
+        private int myVar;
 
+     
         public string UserName
         {
+            set { userName = value; }
             get { return userName; }
         }
 
         public int UserPoints
         {
+            set { userPoints = value; }
             get { return userPoints; }
         }
 
         public int UserHighscore
         {
+            set { userHighscore = value; }
             get { return userHighscore; }
         }
 
         public string UserPassword
         {
+            set { userPassword = value; }
             get { return userPassword; }
         }
 
         public int UserType
         {
+            set { userType = value; }
             get { return userType; }
         }
 

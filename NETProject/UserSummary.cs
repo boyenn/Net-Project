@@ -17,7 +17,7 @@ namespace NETProject
 
         public static void ReadTextFile()
         {
-
+            userList.Clear();
             string line = "";
             string[] words = new string[5];
             string fileToSearch = "Resources/Files/users.txt";
@@ -73,7 +73,7 @@ namespace NETProject
         public static IList<User> UserList
         {
             get { return UserSummary.userList; }
-            set { UserSummary.userList = value; }
+            set { UserSummary.userList = value; WriteTextFile(); }
         }
        
     }
