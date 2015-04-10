@@ -72,7 +72,7 @@ namespace NETProject
         }
         public static IList<User> UserList
         {
-            get { return UserSummary.userList; }
+            get { return UserSummary.userList;  }
             set { UserSummary.userList = value; WriteTextFile(); }
         }
        

@@ -42,18 +42,112 @@ namespace NETProject
             addPupilButton.Click += managePupilsButtonListener;
             changePupilButton.Click += managePupilsButtonListener;
             deletePupilButton.Click += managePupilsButtonListener;
+
+            addTeacherButton.Click += manageTeachersButtonListener;
+            changeTeacherButton.Click += manageTeachersButtonListener;
+            deleteTeacherButton.Click += manageTeachersButtonListener;
         }
 
        
         void managePupilsButtonListener(object sender, RoutedEventArgs e)
         {
+            User pupilObject;
             Button button = (Button)e.Source;
+            
             switch (Convert.ToString(button.Content))
             {
                 case "Toevoegen Leerling":  break;
-                case "Wachtwoord Wijzigen":  break;
-                case "Verwijder Leerling": break;
-           
+                case "Wachtwoord Wijzigen":
+
+                    pupilObject = (User)dataGridPupils.SelectedItem;
+
+                    if (pupilObject == null)
+                    {
+                        MessageBox.Show(this, "Geen leerling geselecteerd",
+                        "Melding", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+
+                    }
+                    
+                    break;
+                case "Verwijder Leerling":
+
+                    pupilObject = (User)dataGridPupils.SelectedItem;
+
+                    if (pupilObject == null)
+                    {
+                        MessageBox.Show(this, "Geen leerling geselecteerd",
+                        "Melding", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        string message = "Bent u zeker dat u deze leerling wilt verwijderen?";
+                        string caption = "Confirmation";
+                        MessageBoxButton buttons = MessageBoxButton.YesNo;
+                        MessageBoxImage icon = MessageBoxImage.Question;
+                        
+                        if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.Yes)
+                        {
+                           
+                           
+                            for (int i = 0; i < UserSummary.UserList.Count; i++) {
+                                User user = (User) UserSummary.UserList[i];
+                                if (user.UserName == pupilObject.UserName)
+                                {
+                                    UserSummary.UserList.RemoveAt(i);
+                                    UserSummary.WriteTextFile();
+                                    AddStudentsToList();
+                                }
+                            }
+                        }
+                    }
+                    break;
+                    
+            }
+        }
+
+        void manageTeachersButtonListener(object sender, RoutedEventArgs e)
+        {
+            User teacherObject;
+            Button button = (Button)e.Source;
+
+            switch (Convert.ToString(button.Content))
+            {
+                case "Toevoegen Leerkracht": break;
+                case "Wachtwoord Wijzigen": break;
+                case "Verwijder Leerkracht": 
+
+                    teacherObject = (User)dataGridTeachers.SelectedItem;
+
+                    if (teacherObject == null)
+                    {
+                        MessageBox.Show(this, "Geen leerkracht geselecteerd",
+                        "Melding", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        string message = "Bent u zeker dat u deze leerkracht wilt verwijderen?";
+                        string caption = "Confirmation";
+                        MessageBoxButton buttons = MessageBoxButton.YesNo;
+                        MessageBoxImage icon = MessageBoxImage.Question;
+                        
+                        if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.Yes)
+                        {
+                            for (int i = 0; i < UserSummary.UserList.Count; i++) {
+                                User user = (User) UserSummary.UserList[i];
+                                if (user.UserName == teacherObject.UserName)
+                                {
+                                    UserSummary.UserList.RemoveAt(i);
+                                    UserSummary.WriteTextFile();
+                                    AddTeachersToList();
+                                }
+                            }
+                        }
+                    }
+                    break;
+
             }
         }
 
@@ -61,12 +155,20 @@ namespace NETProject
         {
             Button button = (Button)e.Source;
             switch (Convert.ToString(button.Content)) {
-                case "Main Menu": mainMenuTab.IsSelected = true; break;
-                case "Oefeningen": exercisesTab.IsSelected = true; break;
-                case "Beheer": manageTab.IsSelected = true; break;
-                case "Log Uit": MainWindow window = new MainWindow(); 
-                                window.Show();
-                                this.Close(); break;
+                case "Main Menu": 
+                    mainMenuTab.IsSelected = true; 
+                    break;
+                case "Oefeningen": 
+                    exercisesTab.IsSelected = true; 
+                    break;
+                case "Beheer": 
+                    manageTab.IsSelected = true; 
+                    break;
+                case "Log Uit": 
+                    MainWindow window = new MainWindow(); 
+                    window.Show();
+                    this.Close(); 
+                    break;
             }
         }
 
@@ -75,14 +177,35 @@ namespace NETProject
             Button button = (Button)e.Source;
             switch (Convert.ToString(button.Content))
             {
-                case "Beheer Oefeningen": excerciseManagementTab.IsSelected = true; break;
-                case "Beheer Leerlingen": pupilManagementTab.IsSelected = true; AddStudentsToList(); break;
-                case "Beheer Leerkrachten": teacherManagementTab.IsSelected = true; break;
+                case "Beheer Oefeningen": 
+                    excerciseManagementTab.IsSelected = true; 
+                    break;
+                case "Beheer Leerlingen": 
+                    pupilManagementTab.IsSelected = true; 
+                    AddStudentsToList(); 
+                    break;
+                case "Beheer Leerkrachten": 
+                    teacherManagementTab.IsSelected = true; 
+                    AddTeachersToList(); 
+                    break;
                
             }
         }
 
+        public void AddTeachersToList()
+        {
 
+            dataGridTeachers.Items.Clear();
+            foreach (User user in UserSummary.UserList)
+            {
+                if (user.UserType == 1)
+                {
+                    var data = new User { UserName = user.UserName };
+                    dataGridTeachers.Items.Add(data);
+                }
+            }
+
+        }
 
         public void AddStudentsToList() {
 
@@ -108,9 +231,22 @@ namespace NETProject
         public void SetVisibilityComponents()
         {
             switch (UserSummary.CurrentUser.UserType) {
-                case 0: manageButton.Visibility = Visibility.Hidden; break;
-                case 1: teacherManagementButton.Visibility = Visibility.Hidden; break;
-                case 2:     break;
+                case 0: 
+                    manageButton.Visibility = Visibility.Hidden;
+                    break;
+                case 1: 
+                    teacherManagementButton.Visibility = Visibility.Hidden;
+                    pointsLabel.Visibility = Visibility.Hidden; 
+                    highscoreLabel.Visibility = Visibility.Hidden;  
+                    pointsLabel2.Visibility = Visibility.Hidden; 
+                    highscoreLabel2.Visibility = Visibility.Hidden; 
+                    break;
+                case 2: 
+                    pointsLabel.Visibility = Visibility.Hidden; 
+                    highscoreLabel.Visibility = Visibility.Hidden;  
+                    pointsLabel2.Visibility = Visibility.Hidden; 
+                    highscoreLabel2.Visibility = Visibility.Hidden; 
+                    break;
             }
           
         }

@@ -19,6 +19,8 @@ using System.Windows.Shapes;
 //datagrid help http://www.wpftutorial.net/datagrid.html
 //http://stackoverflow.com/questions/16251327/wpf-datagrid-add-new-row
 //http://stackoverflow.com/questions/3046003/adding-a-button-to-a-wpf-datagrid
+//messagebox help http://www.c-sharpcorner.com/UploadFile/mahesh/messagebox-in-wpf/
+
 namespace NETProject
 {
     /// <summary>

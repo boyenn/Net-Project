@@ -55,10 +55,10 @@
                                             <DataGridTextColumn Header="Naam" Width="225" Binding="{Binding Path=UserName}" />
                                             <DataGridTextColumn Header="Behaalde punten" Width="110" Binding="{Binding Path=UserPoints}" />
                                             <DataGridTextColumn Header="Highscore" Width="90" Binding="{Binding Path=UserHighscore}" />
-                                            <DataGridTemplateColumn Header="Meer Info">
+                                            <DataGridTemplateColumn Header="Resultaten">
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <Button Width="100" Click="ShowDetails">Lees Meer</Button>
+                                                        <Button Width="100" Click="ShowDetails">Bekijk</Button>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
                                             </DataGridTemplateColumn>
@@ -73,21 +73,16 @@
 
                         <TabItem Name="teacherManagementTab" Header="TabItem">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="459" Width="546">
+                                <DataGrid x:Name="dataGridTeachers"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="459" Width="546">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Naam" Width="225" Binding="{Binding Path=UserName}" />
-                                        <DataGridTextColumn Header="Behaalde punten" Width="110" Binding="{Binding Path=UserPoints}" />
-                                        <DataGridTextColumn Header="Highscore" Width="90" Binding="{Binding Path=UserHighscore}" />
-                                        <DataGridTemplateColumn Header="Meer Info">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Button Width="100" Click="ShowDetails">Lees Meer</Button>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="Naam"  Width="500" Binding="{Binding Path=UserName}" />
+                                      
+                                       
                                     </DataGrid.Columns>
                                 </DataGrid>
-
+                                <Button x:Name="addTeacherButton"  Content="Toevoegen Leerkracht" HorizontalAlignment="Left" Margin="10,479,0,0" VerticalAlignment="Top" Width="173"/>
+                                <Button x:Name="changeTeacherButton" Content="Wachtwoord Wijzigen" HorizontalAlignment="Left" Margin="199,479,0,0" VerticalAlignment="Top" Width="163"/>
+                                <Button x:Name="deleteTeacherButton" Content="Verwijder Leerkracht" HorizontalAlignment="Left" Margin="380,479,0,0" VerticalAlignment="Top" Width="176"/>
                             </Grid>
                         </TabItem>
                     </TabControl>

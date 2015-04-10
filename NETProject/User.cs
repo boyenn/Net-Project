@@ -23,8 +23,7 @@ namespace NETProject
             this.userPoints = userPoints;
             this.userHighscore = userHighscore;
         }
-        private int myVar;
-
+       
      
         public string UserName
         {
