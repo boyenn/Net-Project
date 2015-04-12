@@ -76,3 +76,7 @@ C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject_Ma
 C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject.g.resources
 C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject.Properties.Resources.resources
 C:\Users\Boyen\Desktop\NETProject\Net-Project\NETProject\obj\Debug\NETProject.csproj.GenerateResource.Cache
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\PasswordChangeWindow.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\PasswordChangeWindow.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\AddUserWindow.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\AddUserWindow.g.cs

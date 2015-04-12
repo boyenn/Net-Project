@@ -1,8 +1,7 @@
 admin;pxl;2;0;0
 leerkracht1;pxl;1;0;0
 leerkracht2;pxl;1;0;0
-leerling1;pxl;0;0;0
+leerling1;pxlswag;0;0;0
 leerling2;pxl;0;20;20
 leerling3;pxl;0;50;30
-leerling4;pxl;0;60;50
 leerling5;pxl;0;70;500

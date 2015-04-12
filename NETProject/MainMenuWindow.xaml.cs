@@ -44,6 +44,7 @@ namespace NETProject
             deletePupilButton.Click += managePupilsButtonListener;
 
             addTeacherButton.Click += manageTeachersButtonListener;
+            addTeacherButton.Click += manageTeachersButtonListener;
             changeTeacherButton.Click += manageTeachersButtonListener;
             deleteTeacherButton.Click += manageTeachersButtonListener;
         }
@@ -53,10 +54,16 @@ namespace NETProject
         {
             User pupilObject;
             Button button = (Button)e.Source;
-            
+
+           
             switch (Convert.ToString(button.Content))
             {
-                case "Toevoegen Leerling":  break;
+                case "Toevoegen Leerling":  
+                    
+                    AddUserWindow addUserWindow = new AddUserWindow();
+                    addUserWindow.ShowDialog();
+                   
+                    break;
                 case "Wachtwoord Wijzigen":
 
                     pupilObject = (User)dataGridPupils.SelectedItem;
@@ -68,7 +75,8 @@ namespace NETProject
                     }
                     else
                     {
-
+                        PasswordChangeWindow passwordChangeWindow = new PasswordChangeWindow(pupilObject);
+                        passwordChangeWindow.ShowDialog();
                     }
                     
                     break;
@@ -113,10 +121,28 @@ namespace NETProject
             User teacherObject;
             Button button = (Button)e.Source;
 
+          
             switch (Convert.ToString(button.Content))
             {
-                case "Toevoegen Leerkracht": break;
-                case "Wachtwoord Wijzigen": break;
+                case "Toevoegen Leerkracht":
+                    AddUserWindow addUserWindow = new AddUserWindow();
+                    addUserWindow.ShowDialog();
+                   
+                    break;
+                case "Wachtwoord Wijzigen":
+                    teacherObject = (User)dataGridTeachers.SelectedItem;
+
+                    if (teacherObject == null)
+                    {
+                        MessageBox.Show(this, "Geen leerkracht geselecteerd",
+                        "Melding", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        PasswordChangeWindow passwordChangeWindow = new PasswordChangeWindow(teacherObject);
+                        passwordChangeWindow.ShowDialog();
+                    }
+                    break;
                 case "Verwijder Leerkracht": 
 
                     teacherObject = (User)dataGridTeachers.SelectedItem;
