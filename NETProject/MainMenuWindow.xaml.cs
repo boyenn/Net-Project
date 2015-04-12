@@ -43,7 +43,7 @@ namespace NETProject
             changePupilButton.Click += managePupilsButtonListener;
             deletePupilButton.Click += managePupilsButtonListener;
 
-            addTeacherButton.Click += manageTeachersButtonListener;
+      
             addTeacherButton.Click += manageTeachersButtonListener;
             changeTeacherButton.Click += manageTeachersButtonListener;
             deleteTeacherButton.Click += manageTeachersButtonListener;
@@ -60,9 +60,9 @@ namespace NETProject
             {
                 case "Toevoegen Leerling":  
                     
-                    AddUserWindow addUserWindow = new AddUserWindow();
+                    AddUserWindow addUserWindow = new AddUserWindow(0);
                     addUserWindow.ShowDialog();
-                   
+                    
                     break;
                 case "Wachtwoord Wijzigen":
 
@@ -116,6 +116,8 @@ namespace NETProject
             }
         }
 
+    
+
         void manageTeachersButtonListener(object sender, RoutedEventArgs e)
         {
             User teacherObject;
@@ -125,7 +127,7 @@ namespace NETProject
             switch (Convert.ToString(button.Content))
             {
                 case "Toevoegen Leerkracht":
-                    AddUserWindow addUserWindow = new AddUserWindow();
+                    AddUserWindow addUserWindow = new AddUserWindow(1);
                     addUserWindow.ShowDialog();
                    
                     break;
@@ -233,7 +235,8 @@ namespace NETProject
 
         }
 
-        public void AddStudentsToList() {
+        public void AddStudentsToList()
+        {
 
             dataGridPupils.Items.Clear();
             foreach (User user in UserSummary.UserList)
@@ -276,7 +279,7 @@ namespace NETProject
             }
           
         }
-
+        
         public void SetPersonalInfo() {
             usernameLabel2.Content = UserSummary.CurrentUser.UserName;
             pointsLabel2.Content = UserSummary.CurrentUser.UserPoints;

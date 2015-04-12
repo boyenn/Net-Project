@@ -19,10 +19,18 @@ namespace NETProject
     /// </summary>
     public partial class AddUserWindow : Window
     {
+        private int addUserType;
+
         public AddUserWindow()
         {
             InitializeComponent();
         }
+        public AddUserWindow(int addUserType)
+        {
+            InitializeComponent();
+            this.addUserType = addUserType;
+        }
+        
 
         private void addPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
@@ -59,11 +67,11 @@ namespace NETProject
         {
             if (stringCheck(addUsername.Text, 20))
             {
-                passwordQuestionLabel.Content = "Gebruikersnaam is in orde.";
+                addUsernameLabel.Content = "Gebruikersnaam is in orde.";
             }
             else
             {
-                passwordQuestionLabel.Content = "Enkel cijfers en letters. Moet tussen 6-20 karakters zijn.";
+                addUsernameLabel.Content = "Enkel cijfers en letters. Moet tussen 6-20 karakters zijn.";
             }
         }
         
@@ -93,13 +101,53 @@ namespace NETProject
         }
         public Boolean passwordCheck()
         {
-            if (addPassword2.Password.Equals(addPassword2.Password))
+            if (addPassword2.Password.Equals(addPassword.Password))
             {
                 return true;
             }
             else
             {
                 return false;
+            }
+        }
+
+        private void passwordOkButton_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean found = false;
+            if (stringCheck(addUsername.Text, 20))
+            {
+                if (stringCheck(addPassword.Password, 20))
+                {
+                    if (passwordCheck())
+                    {
+                        foreach (User user in UserSummary.UserList) { 
+                            if(user.UserName.Equals(addUsername.Text)){
+                                found=true;
+                            }
+                        }
+                        if(!found)
+                        { 
+                            UserSummary.UserList.Add(new User(addUsername.Text, addPassword.Password, addUserType, 0, 0));
+                            UserSummary.WriteTextFile();
+                            MessageBox.Show("Gebruiker toegevoegd.", "Wachtwoord Veranderd.", MessageBoxButton.OK, MessageBoxImage.Information);
+                            this.Close();
+                        }else{
+                             MessageBox.Show("Gebruiker bestaat al!", "Gebruiker bestaat al!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        }
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wachtwoorden komen niet overeen", "Wachtwoorden komen niet overeen", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+                else {
+                    MessageBox.Show("Wachtwoord mag enkel cijfers en letters bevatten en moet tussen 6-20 karakters lang zijn.", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Gebruikersnaam mag enkel cijfers en letters bevatten en moet tussen 6-20 karakters lang zijn.", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
     }

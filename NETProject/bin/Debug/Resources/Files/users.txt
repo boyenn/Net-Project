@@ -4,4 +4,7 @@ leerkracht2;pxl;1;0;0
 leerling1;pxlswag;0;0;0
 leerling2;pxl;0;20;20
 leerling3;pxl;0;50;30
-leerling5;pxl;0;70;500
+leerling5;topkek;0;70;500
+leerling12;adminz;0;0;0
+leerling13;topkek;0;0;0
+leerling14;lollol;0;0;0

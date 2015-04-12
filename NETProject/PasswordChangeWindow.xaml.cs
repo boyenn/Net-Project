@@ -19,7 +19,8 @@ namespace NETProject
     /// </summary>
     public partial class PasswordChangeWindow : Window
     {
-        User passwordUser;
+        private User passwordUser;
+
         public PasswordChangeWindow()
         {
             InitializeComponent();
@@ -101,18 +102,19 @@ namespace NETProject
                          if(user.UserName.Equals(passwordUser.UserName)){
                              user.UserPassword = passwordTextBox.Password;
                              UserSummary.WriteTextFile();
+                             MessageBox.Show("Wachtwoord Veranderd.", "Wachtwoord Veranderd.",  MessageBoxButton.OK, MessageBoxImage.Information);
                              this.Close();
                          }
                      }
                  }
                  else
                  {
-                    MessageBox.Show("Wachtwoord komt niet overeen");
+                     MessageBox.Show("Wachtwoord komt niet overeen", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                  }
              }
              else
              {
-                 MessageBox.Show("Ongeldig wachtwoord");
+                 MessageBox.Show("Ongeldig wachtwoord", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
              }
          }
     }
