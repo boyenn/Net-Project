@@ -23,7 +23,6 @@ namespace NETProject
         {
             InitializeComponent();
 
-            
             SetActionListeners();
             SetVisibilityComponents();
             SetPersonalInfo();
@@ -60,7 +59,7 @@ namespace NETProject
             {
                 case "Toevoegen Leerling":  
                     
-                    AddUserWindow addUserWindow = new AddUserWindow(0);
+                    AddUserWindow addUserWindow = new AddUserWindow(0, this);
                     addUserWindow.ShowDialog();
                     
                     break;
@@ -116,6 +115,7 @@ namespace NETProject
             }
         }
 
+ 
     
 
         void manageTeachersButtonListener(object sender, RoutedEventArgs e)
@@ -127,7 +127,8 @@ namespace NETProject
             switch (Convert.ToString(button.Content))
             {
                 case "Toevoegen Leerkracht":
-                    AddUserWindow addUserWindow = new AddUserWindow(1);
+                    AddUserWindow addUserWindow = new AddUserWindow(1, this);
+                  
                     addUserWindow.ShowDialog();
                    
                     break;
@@ -169,7 +170,9 @@ namespace NETProject
                                 {
                                     UserSummary.UserList.RemoveAt(i);
                                     UserSummary.WriteTextFile();
+
                                     AddTeachersToList();
+
                                 }
                             }
                         }
@@ -177,6 +180,11 @@ namespace NETProject
                     break;
 
             }
+        }
+
+        void addUserWindow_Closed(object sender, EventArgs e)
+        {
+            MessageBox.Show("test");
         }
 
         void MainMenuButtonListener(object sender, RoutedEventArgs e)

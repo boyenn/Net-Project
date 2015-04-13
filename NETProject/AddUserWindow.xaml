@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Gebruiker Toevoegen" Height="235" Width="427"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="passwordQuestionLabel" Content="" HorizontalAlignment="Left" Margin="119,51,0,0" VerticalAlignment="Top" FontSize="10" RenderTransformOrigin="-2.1,0.391"/>
+        
         <TextBox x:Name="addUsername" HorizontalAlignment="Left" MaxLength="20" Height="23" Margin="134,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" TextChanged="addUsername_TextChanged"/>
         <PasswordBox x:Name="addPassword"  Height="23" MaxLength="20" HorizontalAlignment="Left" Margin="134,74,0,0" VerticalAlignment="Top" Width="243" PasswordChanged="addPassword_PasswordChanged" />
         <PasswordBox x:Name="addPassword2"  Height="23" MaxLength="20" HorizontalAlignment="Left" Margin="134,122,0,0" VerticalAlignment="Top" Width="243" PasswordChanged="addPassword2_PasswordChanged" />
@@ -14,9 +14,9 @@
         <Label Content="Wachtwoord:" HorizontalAlignment="Left" Margin="12,71,0,0" VerticalAlignment="Top"/>
         <Label Content="Herhaal Wachtwoord:" HorizontalAlignment="Left" Margin="12,119,0,0" VerticalAlignment="Top"/>
 
-       
-        <Label x:Name="passwordQuestionLabel1" Content="" HorizontalAlignment="Left" Margin="119,96,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <Label x:Name="addUsernameLabel" Content="" HorizontalAlignment="Left" Margin="119,10,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Label x:Name="passwordQuestionLabel" Content="" HorizontalAlignment="Left" Margin="119,51,0,0" VerticalAlignment="Top" FontSize="10" RenderTransformOrigin="-2.1,0.391"/>
+        <Label x:Name="passwordQuestionLabel1" Content="" HorizontalAlignment="Left" Margin="119,98,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Label x:Name="addUsernameLabel" Content="" HorizontalAlignment="Left" Margin="119,6,0,0" VerticalAlignment="Top" FontSize="10"/>
 
     </Grid>
 </Window>

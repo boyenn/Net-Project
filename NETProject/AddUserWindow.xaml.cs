@@ -20,15 +20,25 @@ namespace NETProject
     public partial class AddUserWindow : Window
     {
         private int addUserType;
-
+        private MainMenuWindow window;
         public AddUserWindow()
         {
             InitializeComponent();
+            
+            
         }
-        public AddUserWindow(int addUserType)
+
+        public AddUserWindow(MainMenuWindow window)
+        {
+            InitializeComponent();
+           
+
+        }
+        public AddUserWindow(int addUserType, MainMenuWindow window)
         {
             InitializeComponent();
             this.addUserType = addUserType;
+            this.window = window;
         }
         
 
@@ -90,7 +100,7 @@ namespace NETProject
 
         public Boolean stringCheck(string word, int length)
         {
-            if (word.All(Char.IsLetterOrDigit) && addPassword.Password.Length >= 6 && word.Length <= length)
+            if (word.All(Char.IsLetterOrDigit) && word.Length >= 6 && word.Length <= length)
             {
                 return true;
             }
@@ -121,7 +131,7 @@ namespace NETProject
                     if (passwordCheck())
                     {
                         foreach (User user in UserSummary.UserList) { 
-                            if(user.UserName.Equals(addUsername.Text)){
+                            if(string.Equals(user.UserName, addUsername.Text, StringComparison.OrdinalIgnoreCase)){
                                 found=true;
                             }
                         }
@@ -130,6 +140,8 @@ namespace NETProject
                             UserSummary.UserList.Add(new User(addUsername.Text, addPassword.Password, addUserType, 0, 0));
                             UserSummary.WriteTextFile();
                             MessageBox.Show("Gebruiker toegevoegd.", "Wachtwoord Veranderd.", MessageBoxButton.OK, MessageBoxImage.Information);
+                            window.AddStudentsToList();
+                            window.AddTeachersToList();
                             this.Close();
                         }else{
                              MessageBox.Show("Gebruiker bestaat al!", "Gebruiker bestaat al!", MessageBoxButton.OK, MessageBoxImage.Exclamation);

@@ -50,7 +50,7 @@
                         <TabItem Name="pupilManagementTab" Header="TabItem">
                             <Grid Background="#FFE5E5E5">
                                 <Grid Background="#FFE5E5E5" Margin="0,-2,0,2">
-                                    <DataGrid Name="dataGridPupils" Margin="10,10,10,40" SelectionMode="Single" ItemsSource="{Binding User}" AutoGenerateColumns="False" Height="459" Width="546" >
+                                    <DataGrid Name="dataGridPupils" Margin="10,10,10,40" SelectionMode="Single"  IsReadOnly="True"  ItemsSource="{Binding User}" AutoGenerateColumns="False" Height="459" Width="546" >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Naam" Width="225" Binding="{Binding Path=UserName}" />
                                             <DataGridTextColumn Header="Behaalde punten" Width="110" Binding="{Binding Path=UserPoints}" />
@@ -73,7 +73,7 @@
 
                         <TabItem Name="teacherManagementTab" Header="TabItem">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid x:Name="dataGridTeachers"  HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="460" Width="546" SelectionMode="Single" ItemsSource="{Binding User}" AutoGenerateColumns="False">
+                                <DataGrid x:Name="dataGridTeachers"  HorizontalAlignment="Left"  IsReadOnly="True"  Margin="10,8,0,0" VerticalAlignment="Top" Height="460" Width="546" SelectionMode="Single" ItemsSource="{Binding User}" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Naam"  Width="500" Binding="{Binding Path=UserName}" />
                                       
@@ -91,7 +91,7 @@
             </TabItem>
             
         </TabControl>
-        <Separator HorizontalAlignment="Left" Height="87" Margin="-10,35,-21,0" VerticalAlignment="Top" Width="739"/>
+        <Separator HorizontalAlignment="Left" Height="87" Margin="-10,35,-13,0" VerticalAlignment="Top" Width="733"/>
 
         <Button x:Name="mainMenuButton" Content="Main Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Height="69" />
         <Button x:Name="exercisesButton" Content="Oefeningen" HorizontalAlignment="Left" Margin="121,0,0,0" VerticalAlignment="Top" Width="116" Height="69"/>

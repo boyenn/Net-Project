@@ -41,7 +41,6 @@ namespace NETProject
           
 
             UserSummary.ReadTextFile();
-            
 
             aaa.Source = bmprel("Resources/Images/PxlLogo.png");
             aaa.MouseDown += aaa_MouseDown; // empty function 
@@ -72,7 +71,7 @@ namespace NETProject
                             UserSummary.CurrentUser = user;
                            
                             MainMenuWindow mainMenu = new MainMenuWindow();
-                           
+                            
                             mainMenu.Show();
                             this.Close();
                             return;
