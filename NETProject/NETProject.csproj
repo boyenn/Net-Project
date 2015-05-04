@@ -58,9 +58,15 @@
     <Compile Include="AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BalloonQuestion.xaml.cs">
+      <DependentUpon>BalloonQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Country.cs" />
     <Compile Include="DataGridPupils.cs" />
     <Compile Include="FileReader.cs" />
+    <Compile Include="FlagControl.xaml.cs">
+      <DependentUpon>FlagControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImagePath.cs" />
     <Compile Include="MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
@@ -68,11 +74,25 @@
     <Compile Include="PasswordChangeWindow.xaml.cs">
       <DependentUpon>PasswordChangeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Points.cs" />
+    <Compile Include="ScoreWriter.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Tables.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserSummary.cs" />
+    <Compile Include="Word.cs" />
+    <Compile Include="Zin.cs" />
     <Page Include="AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BalloonQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FlagControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainMenuWindow.xaml">
       <SubType>Designer</SubType>

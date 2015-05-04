@@ -80,3 +80,7 @@ C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\PasswordChangeWindow.bam
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\PasswordChangeWindow.g.cs
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\AddUserWindow.baml
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\AddUserWindow.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\FlagControl.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\FlagControl.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\BalloonQuestion.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\BalloonQuestion.g.cs

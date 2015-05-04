@@ -12,8 +12,16 @@ namespace NETProject
     {
         public static BitmapImage Bmprel(string relativepath)
         {
-            Uri x = new Uri(Path.GetFullPath(relativepath), UriKind.Absolute);
-            return new BitmapImage(x);
+            Uri x = null;
+            try
+            {
+                x = new Uri(Path.GetFullPath(relativepath), UriKind.Absolute);
+                return new BitmapImage(x);
+            }
+            catch(FileNotFoundException ex) { 
+                
+            }
+            return null;
         }
     }
 }

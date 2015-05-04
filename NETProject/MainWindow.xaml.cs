@@ -28,31 +28,20 @@ namespace NETProject
     /// </summary>
     public partial class MainWindow : Window
     {
-     
-        public  BitmapImage bmprel(string relativepath)
-        {
-            Uri x = new Uri(System.IO.Path.GetFullPath(relativepath), UriKind.Absolute);
-              return new BitmapImage(x);
-        }
 
+        //*----------------------*
+        //Gebruikersnaam: admin / leerkracht / student
+        //Paswoord: pxl
+        //*----------------------*
+        
         public MainWindow()
         {
             InitializeComponent();
           
-
             UserSummary.ReadTextFile();
-
-            aaa.Source = bmprel("Resources/Images/PxlLogo.png");
-            aaa.MouseDown += aaa_MouseDown; // empty function 
-            
         }
 
-        void aaa_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-           //Example voor mouseclick 
-
-
-        }
+   
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {

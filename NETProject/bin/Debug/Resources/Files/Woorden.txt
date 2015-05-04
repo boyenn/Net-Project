@@ -1,0 +1,60 @@
+aapje;Lenig dier dat een beetje op een mens lijkt;1
+banaan;Tropische, eetbare, langwerpige, gele vrucht met wit en zacht vruchtvlees;1
+fruit;Vruchten die je rauw kunt eten;1
+auto;Motorrijtuig op vier wielen;1
+computer;Machine die heel snel kan rekenen en informatie kan verwerken;2
+zakmes;Klein gereedschap met inklapbaar mes en andere hulpmiddelen, zoals kurkentrekker, flesopener en priem;1
+zakdoek;Kleine vierkante doek om je neus in te snuiten of je tranen mee af te drogen;1
+tafel;Meubelstuk met een horizontaal, vlak blad op één of meer poten om dingen op te zetten of om aan te zitten, bijvoorbeeld tijdens het eten;1
+televisie;Systeem waarmee je bewegende beelden en geluid kunt bekijken die elders worden uitgezonden;1
+nederlands;Taal die in Nederland, Vlaanderen en Suriname wordt gesproken;1
+afvalcontainer;Grote bak om afval in te verzamelen;2
+voetbal;Teamsport waarbij je een bal met de voet of het hoofd in het doel van de tegenstander probeert te krijgen;1
+politiek;Bestuur van een land, provincie of stad;2
+indexatie;Aanpassing van een geldbedrag aan het prijspeil;3
+consolidatie;Samenvoeging tot één balans van activa, passiva, baten en lasten van verschillende onderdelen van een of meer organisaties;3
+manipuleren;Opzettelijk, maar voor anderen ongemerkt, beïnvloeden;2
+interventie;Actieve handeling om een probleem op te lossen;2
+algoritme;Reeks instructies om vanaf een beginpunt een bepaald doel te bereiken;2
+progressief;Als je de samenleving op een vernieuwende manier wilt verbeteren;3
+neurologisch;Als het te maken heeft met de hersenen, het ruggenmerg of de zenuwen;3
+permanent;Als iets altijd blijft of doorgaat;1
+stoïcijns;Als je je niet uit je mentale evenwicht laat brengen;3
+intoxicatie;Ziek worden of doodgaan door vergif;2
+encyclopedie;Naslagwerk met teksten en afbeeldingen waarin je informatie kunt opzoeken over mensen, dieren en dingen;2
+procederen;Een rechtzaak voeren;2
+ingenieus;Slim bedacht of gemaakt;2
+heimelijk;In het geheim;2
+gastronomisch;Die of dat verband houdt met gastronomie;2
+introvert;Als je je gevoelens vooral voor jezelf houdt;3
+liberalisering;het opheffen van beperkingen door de overheid;3
+openbaar;Voor iedereen zichtbaar of toegankelijk;1
+ijveren;Moeite doen om een doel na te streven;2
+innovatie;Ontwikkeling van nieuwe ideeën en dingen;2
+anagram;Woord dat je maakt van de letters van een ander woord;1
+defenitie;Het kort en duidelijk noemen wat iets is;1
+organisch;Voortgekomen uit iets levends;2
+negatie;Tegenovergestelde;1
+immuniteit;Weerstand tegen bepaalde ziekten;2
+frappant;Als iets de aandacht trekt;2
+hypocriet;Iemand die zich beter en eerlijker voordoet dan hij of zij is, of daarnaar handelt jegens anderen;1
+cognitief;met betrekking tot de kennis of het intellect;3
+besterven;Vlees van een geslacht dier laten rijpen;2
+dominant;Als iets of iemand meer invloed of macht heeft dan de rest;1
+paradijs;Plaats waar het heerlijk is om te zijn;1
+verontwaardigd;Boos omdat onrect is gedaan;1
+afferent;Aanvoerend, bv. een bloedvat dat naar een orgaan toe gaat;3
+omslachtig;Minder doelmatig dan zou kunnen;1
+consistent;Met elkaar kloppend, op een logische manier samenhangend;2
+implementeren;Invoeren en ingebruik nemen(nieuw systeem of nieuw beleid);2
+controversieel;Waarover grote meningsverschillen zijn;3
+cerebraal;Logisch redeneren en geen emoties laten blijken;3
+assymmetrisch;twee helften (van iets) die niet elkaars spiegelbeeld zijn;3
+concessie;Wat je toegeeft of opgeeft om een conflict op te lossen;3
+antropologie;Wetenschap die de mens als onderwerp van studie heeft;3
+empirisch;Iets gebasseerd op waarneming;3
+stigmatiseren;(iemand) ten onrechte een slechte reputatie bezorgen;3
+pragmatisch;Praktisch, nuttig en bruikbaar;3
+coherent;Dat helemaal klopt;3
+commensaal;Organisme dat voordeel heeft doordat het met of op een ander organisme leeft, terwijl dit ander organisme daar geen voor- of nadeel van heeft;3
+instrinsiek;Als iets uit jezelf komt;3

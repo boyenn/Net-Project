@@ -11,6 +11,9 @@ namespace NETProject
     {
         private static StreamReader inputStream = null;
         private Country country;
+        private Word word;
+        private User user;
+        private Zin zin;
 
         public FileReader()
         {
@@ -41,13 +44,16 @@ namespace NETProject
                             list.Add(country);
                             break;
 
-                        case "NETProject.User":
-                            country = new Country(words[i++], Convert.ToInt32(words[i++]), Convert.ToInt32(words[i++]), Convert.ToInt32(words[i]));
-                            list.Add(country);
+                        
+
+                        case "NETProject.Word":
+                            word = new Word(words[i++], words[i++], Convert.ToInt32(words[i]));
+                            list.Add(word);
                             break;
-
-                        case "Project.Classe":
-
+                        case "NETProject.Zin":
+                            
+                            zin = new Zin(words[i++], words[i++], words[i++], Convert.ToInt32(words[i]));
+                            list.Add(zin);
                             break;
                     }
                     line = inputStream.ReadLine();
