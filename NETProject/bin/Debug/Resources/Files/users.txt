@@ -1,10 +1,4 @@
-admin;pxl;2;0;0
-leerkracht1;pxl;1;0;0
-leerkracht2;pxl;1;0;0
-leerling1;pxlswag;0;0;0
-leerling2;pxl;0;20;20
-leerling3;pxl;0;50;30
-leerling5;topkek;0;70;500
-leerling12;adminz;0;0;0
-leerling13;topkek;0;0;0
-leerling14;lollol;0;0;0
+Admin;pxl;2;0;0
+Leerkracht;pxl;1;0;0
+Student;pxl;0;100;100
+leerling1;pxlpxl;0;0;0

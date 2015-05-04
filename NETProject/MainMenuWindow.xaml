@@ -13,7 +13,47 @@
             </TabItem>
             <TabItem x:Name="exercisesTab" Header="TabItem">
                 <Grid Background="White">
+                    <GroupBox Header="Oefeningen" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Height="502" Width="140">
+                        <Grid>
+
+                            <Border Name="border1" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,20,0,0" VerticalAlignment="Top" Width="108">
+                                <Image Name="image1"  HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
+                             </Border>
+                            <Border Name="border2" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,81,0,0" VerticalAlignment="Top" Width="108">
+                                <Image Name="image2" HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
+                            </Border>
+                            <Border Name="border3" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,142,0,0" VerticalAlignment="Top" Width="108">
+                                <Image Name="image3" HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
+                            </Border>
+                            <Border Name="border4" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,203,0,0" VerticalAlignment="Top" Width="108">
+                                <Image Name="image4" HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
+                            </Border>
+                            <Border Name="border5" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,264,0,0" VerticalAlignment="Top" Width="108">
+                                <Image Name="image5" HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
+                            </Border>
+                            <Border Name="border6" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,325,0,0" VerticalAlignment="Top" Width="108">
+                                <Image Name="image6" HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
+                            </Border>
+
+
+                           
+                           
+                          
+                          
+                          
+                            
                     
+                            <Button x:Name="startExerciseButton" Content="Start" HorizontalAlignment="Left" Margin="12,448,0,0" VerticalAlignment="Top" Width="103"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10,421,10,37">
+                                <Slider x:Name="difficultySlider" Maximum="3" Minimum="1" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" />
+                            </StackPanel>
+                            <Label Content="Moeilijkheidsgraad:" HorizontalAlignment="Left" Margin="10,390,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.469,0.385"/>
+                         
+                        </Grid>
+                    </GroupBox>
+                   
+
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="manageTab" Header="TabItem">

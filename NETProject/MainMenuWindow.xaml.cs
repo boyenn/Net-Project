@@ -19,13 +19,21 @@ namespace NETProject
     /// </summary>
     public partial class MainMenuWindow : Window
     {
+        private int imageIndex;
+        private int difficulty;
+
         public MainMenuWindow()
         {
             InitializeComponent();
 
+            difficulty = (int)difficultySlider.Value; 
+         
+
             SetActionListeners();
             SetVisibilityComponents();
             SetPersonalInfo();
+            SetMarginComponents();
+            SetImages();
         }
 
         public void SetActionListeners() {
@@ -33,6 +41,14 @@ namespace NETProject
             exercisesButton.Click += MainMenuButtonListener;
             manageButton.Click += MainMenuButtonListener;
             logoutButton.Click += MainMenuButtonListener;
+
+            image1.MouseDown += images_MouseDown;
+            image2.MouseDown += images_MouseDown;
+            image3.MouseDown += images_MouseDown;
+            image4.MouseDown += images_MouseDown;
+            image5.MouseDown += images_MouseDown; 
+            image6.MouseDown += images_MouseDown;
+
 
             excercisesManagementButton.Click += ManageMenuButtonListener;
             pupilManagementButton.Click += ManageMenuButtonListener;
@@ -46,6 +62,13 @@ namespace NETProject
             addTeacherButton.Click += manageTeachersButtonListener;
             changeTeacherButton.Click += manageTeachersButtonListener;
             deleteTeacherButton.Click += manageTeachersButtonListener;
+        }
+
+        public void images_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image temporaryImage = (Image) e.Source;
+            int index = Convert.ToInt32(temporaryImage.Name.Substring(temporaryImage.Name.Length - 1));
+            SetFocusImage(index);
         }
 
        
@@ -182,12 +205,8 @@ namespace NETProject
             }
         }
 
-        void addUserWindow_Closed(object sender, EventArgs e)
-        {
-            MessageBox.Show("test");
-        }
-
-        void MainMenuButtonListener(object sender, RoutedEventArgs e)
+       
+        public void MainMenuButtonListener(object sender, RoutedEventArgs e)
         {
             Button button = (Button)e.Source;
             switch (Convert.ToString(button.Content)) {
@@ -208,7 +227,7 @@ namespace NETProject
             }
         }
 
-        void ManageMenuButtonListener(object sender, RoutedEventArgs e)
+        public void ManageMenuButtonListener(object sender, RoutedEventArgs e)
         {
             Button button = (Button)e.Source;
             switch (Convert.ToString(button.Content))
@@ -294,7 +313,51 @@ namespace NETProject
             highscoreLabel2.Content = UserSummary.CurrentUser.UserHighscore;
         }
 
-       
-        
+
+        public void SetMarginComponents() {
+            if (UserSummary.CurrentUser.UserType == 0)
+            {
+                usernameLabel.Margin = new Thickness(310,10,0,0);
+                usernameLabel2.Margin = new Thickness(310,35,0,0);
+
+                pointsLabel.Margin = new Thickness(398,10,0,0);
+                pointsLabel2.Margin = new Thickness(398,35,0,0);
+
+                highscoreLabel.Margin = new Thickness(484, 10, 0, 0);
+                highscoreLabel2.Margin = new Thickness(484, 35, 0, 0);
+            }
+            else {
+                usernameLabel.Margin = new Thickness(395, 10, 0, 0);
+                usernameLabel2.Margin = new Thickness(395, 35, 0, 0);
+            }
+        }
+
+        public void SetImages() {
+            image1.Source = ImagePath.Bmprel("Resources/Images/hoofdRekenen.jpg");
+            image2.Source = ImagePath.Bmprel("Resources/Images/vlaggen.jpg");
+            image3.Source = ImagePath.Bmprel("Resources/Images/sorteren.jpg");
+            image4.Source = ImagePath.Bmprel("Resources/Images/vlaggen.jpg");
+            image5.Source = ImagePath.Bmprel("Resources/Images/fouteZinnen.jpg");
+            image6.Source = ImagePath.Bmprel("Resources/Images/vlaggen.jpg");
+        }
+
+        public void SetFocusImage(int index)
+        {
+            border1.BorderBrush = Brushes.White;
+            border2.BorderBrush = Brushes.White;
+            border3.BorderBrush = Brushes.White;
+            border4.BorderBrush = Brushes.White;
+            border5.BorderBrush = Brushes.White;
+            border6.BorderBrush = Brushes.White;
+
+            switch (index) {
+                case 1: border1.BorderBrush = Brushes.Red; break;
+                case 2: border2.BorderBrush = Brushes.Red; break;
+                case 3: border3.BorderBrush = Brushes.Red; break;
+                case 4: border4.BorderBrush = Brushes.Red; break;
+                case 5: border5.BorderBrush = Brushes.Red; break;
+                case 6: border6.BorderBrush = Brushes.Red; break;
+            }
+        }
     }
 }
