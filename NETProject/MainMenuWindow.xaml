@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="mainMenuWindow" Height="695.075" Width="998" ResizeMode="NoResize">
     <Grid>
-        
+
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="690" Margin="0,-24,0,0" VerticalAlignment="Top" Width="991">
             <TabItem x:Name="mainMenuTab" Header="TabItem">
                 <Grid Background="White" Margin="0,-3,0,3"/>
@@ -17,7 +17,7 @@
 
                             <Border Name="border1" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,20,0,0" VerticalAlignment="Top" Width="108">
                                 <Image Name="image1"  HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
-                             </Border>
+                            </Border>
                             <Border Name="border2" BorderBrush="White" BorderThickness="2" HorizontalAlignment="Left" Height="56" Margin="10,81,0,0" VerticalAlignment="Top" Width="108">
                                 <Image Name="image2" HorizontalAlignment="Left" Height="52" Margin="0, 0,-2,-2" VerticalAlignment="Top" Width="104"/>
                             </Border>
@@ -39,7 +39,7 @@
                                 <Slider x:Name="difficultySlider" Maximum="3" Minimum="1" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" />
                             </StackPanel>
                             <Label Content="Moeilijkheidsgraad:" HorizontalAlignment="Left" Margin="10,390,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.469,0.385"/>
-                         
+
                         </Grid>
                     </GroupBox>
 
@@ -65,14 +65,34 @@
                         <Button x:Name="_Check" Content="Controleer" HorizontalAlignment="Left" Margin="432,289,0,0" VerticalAlignment="Top" Width="75" Click="Check_Click"/>
                         <Button x:Name="_New" Content="Nieuw" HorizontalAlignment="Left" Margin="352,289,0,0" VerticalAlignment="Top" Width="75" Click="New_Click"/>
                     </Grid>
-                    <Grid x:Name="zinnenGrid" Margin="310,184,0,-14" >
-                        <TextBox x:Name="zinTextBox" HorizontalAlignment="Left" BorderThickness="0" Height="31" IsReadOnly="True" TextWrapping="Wrap" Text="Dit is een voorbeeld zin" VerticalAlignment="Top" Width="254" BorderBrush="White" FontWeight="Bold" FontSize="22" PreviewMouseUp="zinTextBox_PreviewMouseUp" Margin="85,64,0,0"/>
+                    <Grid x:Name="zinnenGrid" Margin="310,184,0,-14" Visibility="Hidden" >
+                        <TextBox x:Name="zinTextBox"  HorizontalAlignment="Left" BorderThickness="0" Height="31" IsReadOnly="True" TextWrapping="Wrap" Text="Dit is een voorbeeld zin" VerticalAlignment="Top" Width="576" BorderBrush="White" FontWeight="Bold" FontSize="18" PreviewMouseUp="zinTextBox_PreviewMouseUp" Margin="85,64,0,0"/>
                         <Button x:Name="checkButton" Content="Controleer" HorizontalAlignment="Left" Margin="85,156,0,0" VerticalAlignment="Top" Width="240" Click="checkButton_Click" Height="25" RenderTransformOrigin="0.594,-0.744"/>
                         <TextBox x:Name="antwoordTextBox" HorizontalAlignment="Left" Height="23" Margin="85,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
                         <Label Content="Klik op het foute woord en verbeter het:" HorizontalAlignment="Left" Margin="85,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.23,0.423" FontSize="10"/>
                         <Label Content="Zin:" HorizontalAlignment="Left" Margin="42,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.759,1.115"/>
                         <Label Content="Correctie:" HorizontalAlignment="Left" Margin="15,100,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Vraag:" HorizontalAlignment="Left" Margin="670,299,0,0" VerticalAlignment="Top" Height="33" Width="70" FontSize="16"/>
+                        <Label x:Name="questionSentenceLabel" Content="" HorizontalAlignment="Left" Margin="740,299,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+
                     </Grid>
+                    <Grid x:Name="breukenGrid" Margin="310,184,0,-14" >
+                        <Label Content="Vereenvoudig indien mogelijk:" HorizontalAlignment="Left" Margin="42,265,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lbl2" Content="" HorizontalAlignment="Left" Margin="19,137,0,0" VerticalAlignment="Top" Height="65" Width="96" FontSize="36"/>
+                        <TextBox x:Name="txtAnswer" HorizontalAlignment="Left" Height="35" Margin="42,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" FontSize="18"/>
+                        <Button x:Name="btnCheck" Content="Controleer" HorizontalAlignment="Left" Margin="237,291,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click" Height="35"/>
+                        <Canvas x:Name="drawingCanvas" HorizontalAlignment="Left" Height="122" Margin="3,86,0,0" VerticalAlignment="Top" Width="330">
+                            <Label x:Name="actionLabel" Content="action" Canvas.Left="125" Height="46" Width="86" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="18" Canvas.Top="-9"/>
+                        </Canvas>
+                        <Label x:Name="lbl3" Content="" HorizontalAlignment="Left" Margin="237,10,0,0" VerticalAlignment="Top" Height="71" Width="96" FontSize="36"/>
+                        <Label x:Name="lbl4" Content="" HorizontalAlignment="Left" Margin="237,137,0,0" VerticalAlignment="Top" Height="71" Width="96" FontSize="36"/>
+                        <Label x:Name="lbl1" Content="" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Height="71" Width="96" FontSize="36"/>
+                        <Canvas x:Name="pieCanvas" HorizontalAlignment="Left" Height="100" Margin="355,10,0,0" VerticalAlignment="Top" Width="100">
+                            <Label Content="=" Canvas.Left="-51" Canvas.Top="68" FontWeight="Bold" FontSize="18"/>
+                        </Canvas>
+
+                    </Grid>
+                   
                 </Grid>
             </TabItem>
             <TabItem x:Name="manageTab" Header="TabItem">
@@ -105,7 +125,7 @@
                         <TabItem Name="excerciseManagementTab" Header="TabItem">
                             <Grid Background="#FFE5E5E5"/>
                         </TabItem>
-                        
+
                         <TabItem Name="pupilManagementTab" Header="TabItem">
                             <Grid Background="#FFE5E5E5">
                                 <Grid Background="#FFE5E5E5" Margin="0,-2,0,2">
@@ -135,8 +155,8 @@
                                 <DataGrid x:Name="dataGridTeachers"  HorizontalAlignment="Left"  IsReadOnly="True"  Margin="10,8,0,0" VerticalAlignment="Top" Height="460" Width="546" SelectionMode="Single" ItemsSource="{Binding User}" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Naam"  Width="500" Binding="{Binding Path=UserName}" />
-                                      
-                                       
+
+
                                     </DataGrid.Columns>
                                 </DataGrid>
                                 <Button x:Name="addTeacherButton"  Content="Toevoegen Leerkracht" HorizontalAlignment="Left" Margin="10,477,0,0" VerticalAlignment="Top" Width="173"/>
@@ -145,10 +165,10 @@
                             </Grid>
                         </TabItem>
                     </TabControl>
-                    
+
                 </Grid>
             </TabItem>
-            
+
         </TabControl>
         <Separator HorizontalAlignment="Left" Height="87" Margin="-10,35,0,0" VerticalAlignment="Top" Width="1002"/>
 
@@ -156,11 +176,11 @@
         <Button x:Name="exercisesButton" Content="Oefeningen" HorizontalAlignment="Left" Margin="121,0,0,0" VerticalAlignment="Top" Width="116" Height="69"/>
         <Button x:Name="manageButton" Content="Beheer" HorizontalAlignment="Left" Margin="242,0,0,0" VerticalAlignment="Top" Width="118" Height="69"/>
         <Button x:Name="logoutButton" Content="Log Uit" HorizontalAlignment="Left" Margin="906,0,0,0" VerticalAlignment="Top" Width="85" Height="69" />
-        
+
         <Label x:Name="usernameLabel" Content="Naam" HorizontalAlignment="Left" Margin="365,10,0,0" VerticalAlignment="Top" Height="34" Width="88" FontWeight="Bold" FontSize="16"/>
         <Label x:Name="pointsLabel" Content="Punten" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.105,0.5" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="highscoreLabel" Content="Highscore" HorizontalAlignment="Left" Margin="539,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        
+
         <Label x:Name="usernameLabel2" Content="Label" HorizontalAlignment="Left" Margin="365,35,0,0" VerticalAlignment="Top"/>
         <Label x:Name="pointsLabel2" Content="Label" HorizontalAlignment="Left" Margin="453,35,0,0" VerticalAlignment="Top"/>
         <Label x:Name="highscoreLabel2" Content="Label" HorizontalAlignment="Left" Margin="539,35,0,0" VerticalAlignment="Top"/>

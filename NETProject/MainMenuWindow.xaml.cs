@@ -43,7 +43,7 @@ namespace NETProject
         private FileReader reader = new FileReader();
         private DateTime today = DateTime.Today;
         private bool dragging = false;
-       
+
         private int correct = 0;
         private int time = 300;
 
@@ -70,12 +70,20 @@ namespace NETProject
         //Zinnen properties
         //*----------------------*
 
+        private int questionSentenceCounter;
         private DispatcherTimer timer3 = new DispatcherTimer();
         private bool mark = true;
         private IList<Zin> sentenceList = new List<Zin>();
         private IList<Zin> randomSentenceList = new List<Zin>();
+        private Zin currentSentence;
 
-       
+        //*----------------------*
+        //Breuken properties
+        //*----------------------*
+        private Random rnd = new Random();
+        private int denominatorMin, denominatorMax, denominator1, numerator1, denominator2, numerator2, actionInt, multiplier, solutionDenominator, solutionNumerator;
+        private string actionString;
+
         public MainMenuWindow()
         {
             InitializeComponent();
@@ -84,8 +92,8 @@ namespace NETProject
             //Algemene initialisatie
             //*----------------------*
 
-            difficulty = (int)difficultySlider.Value; 
-         
+            difficulty = (int)difficultySlider.Value;
+
             SetActionListeners();
             SetVisibilityComponents();
             SetPersonalInfo();
@@ -95,7 +103,7 @@ namespace NETProject
             //*----------------------*
             //Vlaggen initialisatie
             //*----------------------*
-            
+
             MapImage.Source = ImagePath.Bmprel("Resources/Images/map.png");
             MapImage.MouseUp += MapImage_MouseUp;
             vlaggenGrid.MouseUp += mapMainWindow_MouseUp;
@@ -123,24 +131,39 @@ namespace NETProject
 
             words = reader.ReadFile<Word>("Resources/Files/Woorden.txt", 3).Select(s => (Word)s).ToList();
             NewEx();
-          
+
             //*----------------------*
             //Zinnen initialisatie
             //*----------------------*
 
             timer3.Interval = TimeSpan.FromMilliseconds(10);
             timer3.Tick += timer_Tick3;
+            zinTextBox.LostFocus += zinTextBox_LostFocus;
 
-            sentenceList = reader.ReadFile<Word>("Resources/Files/Woorden.txt", 3).Select(s => (Zin)s).ToList();
+            sentenceList = reader.ReadFile<Zin>("Resources/Files/NederlandsOpgaven.txt", 4).Select(s => (Zin)s).ToList();
             zinTextBox.SelectionBrush = Brushes.Yellow;
             makeNewSentences();
+
+            //*----------------------*
+            //Breuken initialisatie
+            //*----------------------*
+            Settings.ReadSettingsFile();
+
+            denominatorMin = Settings.getValue("denominatorMin");
+            denominatorMax = Settings.getValue("denominatorMax");
+
+            DrawLines();
+            GenerateExercise(denominatorMin, denominatorMax);
         }
+
+        
 
         //*----------------------*
         //Algemene methods
         //*----------------------*
-        
-        public void SetActionListeners() {
+
+        public void SetActionListeners()
+        {
             mainMenuButton.Click += MainMenuButtonListener;
             exercisesButton.Click += MainMenuButtonListener;
             manageButton.Click += MainMenuButtonListener;
@@ -150,7 +173,7 @@ namespace NETProject
             image2.MouseDown += images_MouseDown;
             image3.MouseDown += images_MouseDown;
             image4.MouseDown += images_MouseDown;
-            image5.MouseDown += images_MouseDown; 
+            image5.MouseDown += images_MouseDown;
             image6.MouseDown += images_MouseDown;
 
 
@@ -162,7 +185,7 @@ namespace NETProject
             changePupilButton.Click += managePupilsButtonListener;
             deletePupilButton.Click += managePupilsButtonListener;
 
-      
+
             addTeacherButton.Click += manageTeachersButtonListener;
             changeTeacherButton.Click += manageTeachersButtonListener;
             deleteTeacherButton.Click += manageTeachersButtonListener;
@@ -170,25 +193,25 @@ namespace NETProject
 
         public void images_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Image temporaryImage = (Image) e.Source;
+            Image temporaryImage = (Image)e.Source;
             int index = Convert.ToInt32(temporaryImage.Name.Substring(temporaryImage.Name.Length - 1));
             SetFocusImage(index);
         }
 
-       
+
         void managePupilsButtonListener(object sender, RoutedEventArgs e)
         {
             User pupilObject;
             Button button = (Button)e.Source;
 
-           
+
             switch (Convert.ToString(button.Content))
             {
-                case "Toevoegen Leerling":  
-                    
+                case "Toevoegen Leerling":
+
                     AddUserWindow addUserWindow = new AddUserWindow(0, this);
                     addUserWindow.ShowDialog();
-                    
+
                     break;
                 case "Wachtwoord Wijzigen":
 
@@ -204,7 +227,7 @@ namespace NETProject
                         PasswordChangeWindow passwordChangeWindow = new PasswordChangeWindow(pupilObject);
                         passwordChangeWindow.ShowDialog();
                     }
-                    
+
                     break;
                 case "Verwijder Leerling":
 
@@ -221,13 +244,14 @@ namespace NETProject
                         string caption = "Confirmation";
                         MessageBoxButton buttons = MessageBoxButton.YesNo;
                         MessageBoxImage icon = MessageBoxImage.Question;
-                        
+
                         if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.Yes)
                         {
-                           
-                           
-                            for (int i = 0; i < UserSummary.UserList.Count; i++) {
-                                User user = (User) UserSummary.UserList[i];
+
+
+                            for (int i = 0; i < UserSummary.UserList.Count; i++)
+                            {
+                                User user = (User)UserSummary.UserList[i];
                                 if (user.UserName == pupilObject.UserName)
                                 {
                                     UserSummary.UserList.RemoveAt(i);
@@ -238,26 +262,26 @@ namespace NETProject
                         }
                     }
                     break;
-                    
+
             }
         }
 
- 
-    
+
+
 
         void manageTeachersButtonListener(object sender, RoutedEventArgs e)
         {
             User teacherObject;
             Button button = (Button)e.Source;
 
-          
+
             switch (Convert.ToString(button.Content))
             {
                 case "Toevoegen Leerkracht":
                     AddUserWindow addUserWindow = new AddUserWindow(1, this);
-                  
+
                     addUserWindow.ShowDialog();
-                   
+
                     break;
                 case "Wachtwoord Wijzigen":
                     teacherObject = (User)dataGridTeachers.SelectedItem;
@@ -273,7 +297,7 @@ namespace NETProject
                         passwordChangeWindow.ShowDialog();
                     }
                     break;
-                case "Verwijder Leerkracht": 
+                case "Verwijder Leerkracht":
 
                     teacherObject = (User)dataGridTeachers.SelectedItem;
 
@@ -288,11 +312,12 @@ namespace NETProject
                         string caption = "Confirmation";
                         MessageBoxButton buttons = MessageBoxButton.YesNo;
                         MessageBoxImage icon = MessageBoxImage.Question;
-                        
+
                         if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.Yes)
                         {
-                            for (int i = 0; i < UserSummary.UserList.Count; i++) {
-                                User user = (User) UserSummary.UserList[i];
+                            for (int i = 0; i < UserSummary.UserList.Count; i++)
+                            {
+                                User user = (User)UserSummary.UserList[i];
                                 if (user.UserName == teacherObject.UserName)
                                 {
                                     UserSummary.UserList.RemoveAt(i);
@@ -309,24 +334,25 @@ namespace NETProject
             }
         }
 
-       
+
         public void MainMenuButtonListener(object sender, RoutedEventArgs e)
         {
             Button button = (Button)e.Source;
-            switch (Convert.ToString(button.Content)) {
-                case "Main Menu": 
-                    mainMenuTab.IsSelected = true; 
+            switch (Convert.ToString(button.Content))
+            {
+                case "Main Menu":
+                    mainMenuTab.IsSelected = true;
                     break;
-                case "Oefeningen": 
-                    exercisesTab.IsSelected = true; 
+                case "Oefeningen":
+                    exercisesTab.IsSelected = true;
                     break;
-                case "Beheer": 
-                    manageTab.IsSelected = true; 
+                case "Beheer":
+                    manageTab.IsSelected = true;
                     break;
-                case "Log Uit": 
-                    MainWindow window = new MainWindow(); 
+                case "Log Uit":
+                    MainWindow window = new MainWindow();
                     window.Show();
-                    this.Close(); 
+                    this.Close();
                     break;
             }
         }
@@ -336,18 +362,18 @@ namespace NETProject
             Button button = (Button)e.Source;
             switch (Convert.ToString(button.Content))
             {
-                case "Beheer Oefeningen": 
-                    excerciseManagementTab.IsSelected = true; 
+                case "Beheer Oefeningen":
+                    excerciseManagementTab.IsSelected = true;
                     break;
-                case "Beheer Leerlingen": 
-                    pupilManagementTab.IsSelected = true; 
-                    AddStudentsToList(); 
+                case "Beheer Leerlingen":
+                    pupilManagementTab.IsSelected = true;
+                    AddStudentsToList();
                     break;
-                case "Beheer Leerkrachten": 
-                    teacherManagementTab.IsSelected = true; 
-                    AddTeachersToList(); 
+                case "Beheer Leerkrachten":
+                    teacherManagementTab.IsSelected = true;
+                    AddTeachersToList();
                     break;
-               
+
             }
         }
 
@@ -378,7 +404,7 @@ namespace NETProject
                     dataGridPupils.Items.Add(data);
                 }
             }
-            
+
         }
 
         public void ShowDetails(object sender, RoutedEventArgs e)
@@ -390,53 +416,58 @@ namespace NETProject
 
         public void SetVisibilityComponents()
         {
-            switch (UserSummary.CurrentUser.UserType) {
-                case 0: 
+            switch (UserSummary.CurrentUser.UserType)
+            {
+                case 0:
                     manageButton.Visibility = Visibility.Hidden;
                     break;
-                case 1: 
+                case 1:
                     teacherManagementButton.Visibility = Visibility.Hidden;
-                    pointsLabel.Visibility = Visibility.Hidden; 
-                    highscoreLabel.Visibility = Visibility.Hidden;  
-                    pointsLabel2.Visibility = Visibility.Hidden; 
-                    highscoreLabel2.Visibility = Visibility.Hidden; 
+                    pointsLabel.Visibility = Visibility.Hidden;
+                    highscoreLabel.Visibility = Visibility.Hidden;
+                    pointsLabel2.Visibility = Visibility.Hidden;
+                    highscoreLabel2.Visibility = Visibility.Hidden;
                     break;
-                case 2: 
-                    pointsLabel.Visibility = Visibility.Hidden; 
-                    highscoreLabel.Visibility = Visibility.Hidden;  
-                    pointsLabel2.Visibility = Visibility.Hidden; 
-                    highscoreLabel2.Visibility = Visibility.Hidden; 
+                case 2:
+                    pointsLabel.Visibility = Visibility.Hidden;
+                    highscoreLabel.Visibility = Visibility.Hidden;
+                    pointsLabel2.Visibility = Visibility.Hidden;
+                    highscoreLabel2.Visibility = Visibility.Hidden;
                     break;
             }
-          
+
         }
-        
-        public void SetPersonalInfo() {
+
+        public void SetPersonalInfo()
+        {
             usernameLabel2.Content = UserSummary.CurrentUser.UserName;
             pointsLabel2.Content = UserSummary.CurrentUser.UserPoints;
             highscoreLabel2.Content = UserSummary.CurrentUser.UserHighscore;
         }
 
 
-        public void SetMarginComponents() {
+        public void SetMarginComponents()
+        {
             if (UserSummary.CurrentUser.UserType == 0)
             {
-                usernameLabel.Margin = new Thickness(310,10,0,0);
-                usernameLabel2.Margin = new Thickness(310,35,0,0);
+                usernameLabel.Margin = new Thickness(310, 10, 0, 0);
+                usernameLabel2.Margin = new Thickness(310, 35, 0, 0);
 
-                pointsLabel.Margin = new Thickness(398,10,0,0);
-                pointsLabel2.Margin = new Thickness(398,35,0,0);
+                pointsLabel.Margin = new Thickness(398, 10, 0, 0);
+                pointsLabel2.Margin = new Thickness(398, 35, 0, 0);
 
                 highscoreLabel.Margin = new Thickness(484, 10, 0, 0);
                 highscoreLabel2.Margin = new Thickness(484, 35, 0, 0);
             }
-            else {
+            else
+            {
                 usernameLabel.Margin = new Thickness(395, 10, 0, 0);
                 usernameLabel2.Margin = new Thickness(395, 35, 0, 0);
             }
         }
 
-        public void SetImages() {
+        public void SetImages()
+        {
             image1.Source = ImagePath.Bmprel("Resources/Images/hoofdRekenen.jpg");
             image2.Source = ImagePath.Bmprel("Resources/Images/breuken.jpg");
             image3.Source = ImagePath.Bmprel("Resources/Images/sorteren.jpg");
@@ -454,7 +485,8 @@ namespace NETProject
             border5.BorderBrush = Brushes.White;
             border6.BorderBrush = Brushes.White;
 
-            switch (index) {
+            switch (index)
+            {
                 case 1: border1.BorderBrush = Brushes.Red; break;
                 case 2: border2.BorderBrush = Brushes.Red; break;
                 case 3: border3.BorderBrush = Brushes.Red; break;
@@ -464,7 +496,7 @@ namespace NETProject
             }
         }
 
-        
+
         //*----------------------*
         //Oefening vlaggen methods
         //*----------------------*
@@ -737,12 +769,15 @@ namespace NETProject
 
         private void balloonCheckTime()
         {
-            if (_time == 0)
+            if (_time == 0 && operation != null)
             {
+
                 MessageBox.Show("Helaas, het juiste antwoord was: " + operation.getAnswer() + ".");
+
                 _time = 20;
                 balloonTimeLabel.Content = Convert.ToString(_time);
                 CreateQuestion();
+
             }
         }
 
@@ -888,7 +923,7 @@ namespace NETProject
         void timer_Tick3(object sender, EventArgs e)
         {
             int clickedIndex = zinTextBox.GetCharacterIndexFromPoint(Mouse.GetPosition(zinTextBox), true);
-
+            zinTextBox.SelectionBrush = Brushes.Yellow;
 
             if (!string.IsNullOrWhiteSpace(Convert.ToString(zinTextBox.Text[clickedIndex])))
             {
@@ -902,8 +937,26 @@ namespace NETProject
 
         private void checkButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(zinTextBox.SelectedText);
 
+            zinTextBox.SelectionBrush = Brushes.Transparent;
+
+            if (currentSentence.WrongWord.Equals(zinTextBox.SelectedText) && currentSentence.CorrectedWord.Equals(antwoordTextBox.Text))
+            {
+
+                MessageBox.Show("Juist antwoord!");
+
+            }
+            else {
+
+               // MessageBox.Show("fout! " + currentSentence.WrongWord + " " + zinTextBox.SelectedText + " " + currentSentence.CorrectedWord + " " + antwoordTextBox.Text);
+               MessageBox.Show("Fout!" + Environment.NewLine + "Foute woord: " + currentSentence.WrongWord + Environment.NewLine + "Correctie: " + currentSentence.CorrectedWord);
+            }
+
+
+           
+            nextSentence();
+         
+           
         }
 
 
@@ -967,26 +1020,40 @@ namespace NETProject
             return array;
         }
 
-        private void makeNewSentences() {
-           randomSentenceList.Clear();
+        private void makeNewSentences()
+        {
+            questionSentenceCounter = 0;
+            randomSentenceList.Clear();
 
-           int counter = 0;
+          
 
-           while (counter < 10) { 
-               int random = r.Next(0, sentenceList.Count);
+            while (randomSentenceList.Count < 10)
+            {
+                int random = r.Next(0, sentenceList.Count);
 
-               if (!randomSentenceList.Contains(sentenceList[random]) && sentenceList[random].Difficulty <= difficulty)
-               {
-                   randomSentenceList.Add(sentenceList[r.Next(0, sentenceList.Count)]);
-                   counter++;
-               }
-           }
+                if (!randomSentenceList.Contains(sentenceList[random]) && sentenceList[random].Difficulty <= difficulty)
+                {
+                    randomSentenceList.Add(sentenceList[random]);
+                   
+                }
+            }
+            
+            nextSentence();
 
-           
         }
 
-        private void nextSentence() { 
-            
+        private void nextSentence()
+        {
+
+            questionSentenceLabel.Content = ++questionSentenceCounter + "/10";
+            currentSentence = randomSentenceList[randomSentenceList.Count - 1];
+            randomSentenceList.Remove(currentSentence);
+
+            zinTextBox.Text = currentSentence.Sentence;
+
+
+            antwoordTextBox.Clear();
+
         }
 
         private void zinTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -996,6 +1063,207 @@ namespace NETProject
                 timer3.Start();
             }
             mark = false;
+        }
+   
+        void zinTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            
+            e.Handled = true;
+        }
+
+        //*----------------------*
+        //Breuken methods
+        //*----------------------*
+
+        private void GenerateExercise(int denominatorMin, int denominatorMax)
+        {
+            //<Begin> random kiezen of het een optelling of aftrekking wordt.
+            actionInt = rnd.Next(1, 3);
+            if (actionInt == 1)
+            {
+                actionString = "+";
+            }
+            else
+            {
+                actionString = "-";
+            }
+            //<Einde>
+
+            //<Begin> De random breuken genereren.
+            denominator1 = rnd.Next(denominatorMin, denominatorMax + 1);
+            numerator1 = rnd.Next(1, denominator1 + 1);
+            multiplier = rnd.Next(1, 4);
+            denominator2 = multiplier * denominator1;
+            numerator2 = rnd.Next(1, denominator2 + 1);
+            //<Einde>
+
+
+
+            DrawExercise();
+            CalculateResult();
+
+            CakesToDraw(solutionNumerator, solutionDenominator);
+        }
+
+        private void DrawExercise()
+        {
+
+
+            actionLabel.Content = actionString;
+            lbl1.Content = numerator1;
+            lbl2.Content = denominator1;
+
+            lbl3.Content = numerator2;
+            lbl4.Content = denominator2;
+
+        }
+        private void CalculateResult()
+        {
+            if ((Convert.ToDouble(numerator2) / multiplier) % 1 == 0)
+            {
+                solutionDenominator = denominator1;
+                if (actionInt == 1)
+                {
+                    solutionNumerator = numerator1 + numerator2 / multiplier;
+                }
+                else
+                {
+                    solutionNumerator = numerator1 - numerator2 / multiplier;
+                }
+
+            }
+            else
+            {
+                solutionDenominator = denominator2;
+                if (actionInt == 1)
+                {
+                    solutionNumerator = numerator1 * multiplier + numerator2;
+                }
+                else
+                {
+                    solutionNumerator = numerator1 * multiplier - numerator2;
+                }
+
+            }
+
+        }
+        private void DrawLines()
+        {
+            Line line1 = new Line();
+            Line line2 = new Line();
+
+            line1.X1 = 10;
+            line1.Y1 = 10;
+            line1.X2 = 60;
+            line1.Y2 = 10;
+            line1.Stroke = new SolidColorBrush(Colors.Black);
+
+            line2.X1 = 230;
+            line2.Y1 = 10;
+            line2.X2 = 280;
+            line2.Y2 = 10;
+            line2.Stroke = new SolidColorBrush(Colors.Black);
+            drawingCanvas.Children.Add(line1);
+            drawingCanvas.Children.Add(line2);
+
+
+        }
+        private void CakesToDraw(int num, int denom)
+        {
+            int amountOfCakes, x = 10, y = 10, counter = 1;
+
+            amountOfCakes = (num / denom) + 1;
+
+
+
+
+            while (amountOfCakes > 1)
+            {
+                Ellipse e = new Ellipse { Width = 100, Height = 100, Margin = new Thickness(x, y, 0, 0) };
+                e.Fill = Brushes.Red;
+                pieCanvas.Children.Add(e);
+                amountOfCakes -= 1;
+                x += 110;
+                num -= denom;
+                counter += 1;
+                if (counter == 3)
+                {
+                    x -= 220;
+                    y += 110;
+                }
+            }
+
+            DrawCakes(num, denom, x, y);
+
+        }
+        private void DrawCakes(int num, int denom, int x, int y)
+        {
+
+            Ellipse e = new Ellipse { Width = 100, Height = 100, Margin = new Thickness(x, y, 0, 0) };
+            var centerx = e.Margin.Left + e.Width / 2;
+            var centery = e.Margin.Top + e.Height / 2;
+            e.Fill = Brushes.Red;
+            double degrees = 360 - ((Convert.ToDouble(num) / denom) * 360.0);
+
+            int rest = (int)degrees % 90;
+            int tricount = (int)(degrees / 90) + 1;
+            Point Centerpoint = new Point(centerx, centery);
+            pieCanvas.Children.Add(e);
+
+            for (int j = 1; j <= tricount; j++)
+            {
+                Polygon p = new Polygon();
+                p.Fill = Brushes.White;
+
+                p.Points.Add(Centerpoint);
+
+                p.Points.Add(new Point(centerx + 100 * Math.Cos(ConvertToRadians((j - 2) * 90)), centery + 100 * Math.Sin(ConvertToRadians((j - 2) * 90))));
+                if (j == tricount)
+                {
+                    p.Points.Add(new Point(centerx + 100 * Math.Cos(ConvertToRadians((j - 2) * 90 + rest)), centery + 100 * Math.Sin(ConvertToRadians((j - 2) * 90 + rest))));
+                }
+                else
+                {
+                    p.Points.Add(new Point(centerx + 100 * Math.Cos(ConvertToRadians((j - 1) * 90)), centery + 100 * Math.Sin(ConvertToRadians((j - 1) * 90))));
+                }
+
+                pieCanvas.Children.Add(p);
+
+            }
+
+
+
+
+
+
+
+        }
+        private void CheckAnswer()
+        {
+
+            string answer = txtAnswer.Text;
+            string[] fraction = answer.Split('/');
+            int answerNumerator = Convert.ToInt32(fraction[0]);
+            int answerDenominator = Convert.ToInt32(fraction[1]);
+            if (answerNumerator == solutionNumerator && answerDenominator == solutionDenominator)
+            {
+                MessageBox.Show("Proficiat!! Je hebt het goed!");
+            }
+            else
+            {
+                MessageBox.Show("Helaas, dit was niet het juiste antwoord, het juiste antwoord was: " + solutionNumerator + "/" + solutionDenominator);
+            }
+            GenerateExercise(denominatorMin, denominatorMax);
+
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            CheckAnswer();
+        }
+        public double ConvertToRadians(double angle)
+        {
+            return (Math.PI / 180) * angle;
         }
     }
 }

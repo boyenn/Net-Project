@@ -24,20 +24,13 @@ namespace NETProject
 
         private string ShakeWord(string word)
         {
-            List<string> full = new List<string>();
-            string shaken = string.Empty;
-            for (int i = 0; i < word.Length; i++)
-            {
-                full.Add(word.Substring(i, 1));
-            }
+            string full = word;
+            string shaken = String.Empty;
             while (shaken.Length != word.Length)
             {
-                for (int i = 0; i < full.Count; i++)
-                {
-                    int random = r.Next(0, full.Count - 1);
-                    shaken += full[random];
-                    full.RemoveAt(random);
-                }
+                int random = r.Next(0, full.Length - 1);
+                shaken += full.Substring(random, 1);
+                full = full.Remove(random, 1);
             }
             return shaken;
         }

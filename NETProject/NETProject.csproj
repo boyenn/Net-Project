@@ -79,6 +79,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Tables.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserAlreadyExistException.cs" />
     <Compile Include="UserSummary.cs" />
     <Compile Include="Word.cs" />
     <Compile Include="Zin.cs" />

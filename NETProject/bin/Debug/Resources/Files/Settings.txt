@@ -1,0 +1,10 @@
+multiplicationMin;1
+multiplicationMax;9
+divisionMin;1
+divisionMax;9
+subtractMin;0
+subtractMax;9
+sumMin;1
+sumMax;9
+denominatorMin;1
+denominatorMax;9

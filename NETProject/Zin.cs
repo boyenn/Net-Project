@@ -11,6 +11,10 @@ namespace NETProject
         private String sentence, wrongWord, correctedWord;
         private int difficulty;
 
+
+         public Zin() { 
+        }
+
         public Zin(string sentence, string wrongWord, string correctedWord, int difficulty) {
             this.sentence = sentence;
             this.wrongWord = wrongWord;

@@ -123,43 +123,56 @@ namespace NETProject
 
         private void passwordOkButton_Click(object sender, RoutedEventArgs e)
         {
-            Boolean found = false;
-            if (stringCheck(addUsername.Text, 20))
+            try
             {
-                if (stringCheck(addPassword.Password, 20))
+                Boolean found = false;
+                if (stringCheck(addUsername.Text, 20))
                 {
-                    if (passwordCheck())
+                    if (stringCheck(addPassword.Password, 20))
                     {
-                        foreach (User user in UserSummary.UserList) { 
-                            if(string.Equals(user.UserName, addUsername.Text, StringComparison.OrdinalIgnoreCase)){
-                                found=true;
+                        if (passwordCheck())
+                        {
+                            foreach (User user in UserSummary.UserList)
+                            {
+                                if (string.Equals(user.UserName, addUsername.Text, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    found = true;
+                                }
                             }
+                            if (!found)
+                            {
+                                UserSummary.UserList.Add(new User(addUsername.Text, addPassword.Password, addUserType, 0, 0));
+                                UserSummary.WriteTextFile();
+                                MessageBox.Show("Gebruiker toegevoegd.", "Wachtwoord Veranderd.", MessageBoxButton.OK, MessageBoxImage.Information);
+                                window.AddStudentsToList();
+                                window.AddTeachersToList();
+                                this.Close();
+                            }
+                            else
+                            {
+                              
+                                throw new UserAlreadyExistException("Gebruiker bestaat al");
+                            }
+
                         }
-                        if(!found)
-                        { 
-                            UserSummary.UserList.Add(new User(addUsername.Text, addPassword.Password, addUserType, 0, 0));
-                            UserSummary.WriteTextFile();
-                            MessageBox.Show("Gebruiker toegevoegd.", "Wachtwoord Veranderd.", MessageBoxButton.OK, MessageBoxImage.Information);
-                            window.AddStudentsToList();
-                            window.AddTeachersToList();
-                            this.Close();
-                        }else{
-                             MessageBox.Show("Gebruiker bestaat al!", "Gebruiker bestaat al!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        else
+                        {
+                            MessageBox.Show("Wachtwoorden komen niet overeen", "Wachtwoorden komen niet overeen", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
                         }
-                       
                     }
                     else
                     {
-                        MessageBox.Show("Wachtwoorden komen niet overeen", "Wachtwoorden komen niet overeen", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        MessageBox.Show("Wachtwoord mag enkel cijfers en letters bevatten en moet tussen 6-20 karakters lang zijn.", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                 }
-                else {
-                    MessageBox.Show("Wachtwoord mag enkel cijfers en letters bevatten en moet tussen 6-20 karakters lang zijn.", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                else
+                {
+                    MessageBox.Show("Gebruikersnaam mag enkel cijfers en letters bevatten en moet tussen 6-20 karakters lang zijn.", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
-            else
-            {
-                MessageBox.Show("Gebruikersnaam mag enkel cijfers en letters bevatten en moet tussen 6-20 karakters lang zijn.", "Fout", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            catch (UserAlreadyExistException ex) {
+                MessageBox.Show("Gebruiker bestaat al!", "Gebruiker bestaat al!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
     }

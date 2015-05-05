@@ -1,30 +1,30 @@
-Vandaag is het een mooi dag.;mooi;mooie;1
-Het hond is mooi.;Het;De;1
-Een eisje eet je meestal als het warm weer is.;eisje;ijsje;1
-Een pestkop heeft veel veianden!;veianden;vijanden;1
-Het is beina vakantie. Ik kijk er al naar uit!;beina;bijna;1
-In de klas leren we veel lietjes.;lietjes;liedjes;1
-Heb je een blaatje om op te schrijven.;blaatje;blaadje;1
-Er spoelden twee nieuwe zeehonten aan.;zeehonten;zeehonden;1
-De faabriek maakt leuk speelgoed.;faabriek;fabriek;1
-Mijn favoriete kleur is blouw.;blouw;blauw;1
-We mogen wel spreken, maar geen lawaai maaken.;maaken;maken;2
-Als Jantje zich verveelt, begint hij met zijn eten te speelen.;speelen;spelen;2
-Ik vint Jos een leuke jongen.;vint;vind;2
-Dat verdient een schauderklopje.;schauderklopje;schouderklopje;2
-Ga je in ougustus op reis?;ougustus;augustus;2
-De groote boom is hoog.;groote;grote;2
-Mama vindt het niet fijn als ik door de kamer loop als zei dwijlt.;zei;zij;2
-Ik tel tot hondert en dan kom ik jullie zoeken.;hondert;honderd;2
-In één uur tel je zestig minuuten.;minuuten;minuten;2
-Spelen jullie altijd zo ruuw?;ruuw;ruw;2
-Het water word heel heet.;word;wordt;3
-Vindt jij ook dat we veel geluk hadden?;Vindt;Vind;3
-Het rivierwater stinkd.;stinkd;stinkt;3
-Wat gebeurd er op straat?;gebeurd;gebeurt;3
-Moeder laad de koffers in.;laad;laadt;3
-Weet jij waar zus heen rijd?;rijd;rijdt;3
-Papa vermijd de ochtendfiles.;vermijd;vermijdt;3
-Vermijdt je ook wel eens de ochtendfiles?;Vermijdt;Vermijd;3
-Ik heb dat nooit gelooft.;gelooft;geloofd;3
-De juf beweerd dat ze heel goed kan zingen.;beweerd;beweert;3
+Vandaag is het een mooi dag;mooi;mooie;1
+Het hond is mooi;Het;De;1
+Een eisje eet je meestal als het warm weer is;eisje;ijsje;1
+Een pestkop heeft veel veianden;veianden;vijanden;1
+Het is beina vakantie. Ik kijk er al naar uit;beina;bijna;1
+In de klas leren we veel lietjes;lietjes;liedjes;1
+Heb je een blaatje om op te schrijven;blaatje;blaadje;1
+Er spoelden twee nieuwe zeehonten aan;zeehonten;zeehonden;1
+De faabriek maakt leuk speelgoed;faabriek;fabriek;1
+Mijn favoriete kleur is blouw;blouw;blauw;1
+We mogen wel spreken, maar geen lawaai maaken;maaken;maken;2
+Als Jantje zich verveelt, begint hij met zijn eten te speelen;speelen;spelen;2
+Ik vint Jos een leuke jongen;vint;vind;2
+Dat verdient een schauderklopje;schauderklopje;schouderklopje;2
+Ga je in ougustus op reis;ougustus;augustus;2
+De groote boom is hoog;groote;grote;2
+Mama vindt het niet fijn als ik door de kamer loop als zei dwijlt;zei;zij;2
+Ik tel tot hondert en dan kom ik jullie zoeken;hondert;honderd;2
+In één uur tel je zestig minuuten;minuuten;minuten;2
+Spelen jullie altijd zo ruuw;ruuw;ruw;2
+Het water word heel heet;word;wordt;3
+Vindt jij ook dat we veel geluk hadden;Vindt;Vind;3
+Het rivierwater stinkd;stinkd;stinkt;3
+Wat gebeurd er op straat;gebeurd;gebeurt;3
+Moeder laad de koffers in;laad;laadt;3
+Weet jij waar zus heen rijd;rijd;rijdt;3
+Papa vermijd de ochtendfiles;vermijd;vermijdt;3
+Vermijdt je ook wel eens de ochtendfiles;Vermijdt;Vermijd;3
+Ik heb dat nooit gelooft;gelooft;geloofd;3
+De juf beweerd dat ze heel goed kan zingen;beweerd;beweert;3

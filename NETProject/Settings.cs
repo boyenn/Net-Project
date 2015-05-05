@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WiskundeProject
+namespace NETProject
 {
     static class Settings
     {
@@ -18,7 +18,7 @@ namespace WiskundeProject
         {
             string line = "";
             string[] words = new string[2];
-            string fileToSearch = "Settings.txt";
+            string fileToSearch = "Resources/Files/Settings.txt";
         
 
             try
