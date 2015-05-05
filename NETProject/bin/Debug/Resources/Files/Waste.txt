@@ -1,0 +1,16 @@
+can;PMD
+glassBottle;Glas
+plasticBottle;PMD
+paperStack;Papier en Karton
+cardboardBox;Papier en Karton
+bananaPeel;GFT
+moldedBread;GFT
+big-mac;GFT
+broccoli;GFT
+cherries;GFT
+envelope;Papier en Karton
+paperRoll;Papier en Karton
+pillow;Restafval
+strawberry;GFT
+pants;Restafval
+heineken;Glas

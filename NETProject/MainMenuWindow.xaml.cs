@@ -24,7 +24,7 @@ namespace NETProject
         //Algemene properties
         //*----------------------*
 
-        private int imageIndex;
+       // private int imageIndex;
         private int difficulty;
 
 
@@ -83,6 +83,21 @@ namespace NETProject
         private Random rnd = new Random();
         private int denominatorMin, denominatorMax, denominator1, numerator1, denominator2, numerator2, actionInt, multiplier, solutionDenominator, solutionNumerator;
         private string actionString;
+
+
+        //*----------------------*
+        //Afval properties
+        //*----------------------*
+        private BinControl wasteBin;
+        private WasteControl waste;
+        private Waste getWaste;
+        private IList<Waste> wasteList = new List<Waste>();
+        private IList<Waste> randomWasteList = new List<Waste>();
+        private DispatcherTimer timer4 = new DispatcherTimer();
+        //private Random r = new Random();
+        //private bool dragging = false;
+        private int y = 0;
+        private int counter = 0;
 
         public MainMenuWindow()
         {
@@ -154,6 +169,27 @@ namespace NETProject
 
             DrawLines();
             GenerateExercise(denominatorMin, denominatorMax);
+
+            //*----------------------*
+            //Afval initialisatie
+            //*----------------------*
+
+            FillCanvas(wasteCanvas);
+            timer4.Tick += timer_Tick4;
+            timer4.Interval = TimeSpan.FromMilliseconds(100);
+            wasteList = reader.ReadFile<Waste>("Resources/Files/Waste.txt", 2).Select(s => (Waste)s).ToList();
+            wasteCanvas.MouseLeave += Waste_DragLeave;
+            wasteCanvas.MouseUp += wasteCanvas_MouseUp;
+            while (randomWasteList.Count < 10)
+            {
+                int random = r.Next(0, wasteList.Count);
+
+                if (!randomWasteList.Contains(wasteList[random]))
+                {
+                    randomWasteList.Add(wasteList[random]);
+                }
+            }
+            NextWaste();
         }
 
         
@@ -1264,6 +1300,99 @@ namespace NETProject
         public double ConvertToRadians(double angle)
         {
             return (Math.PI / 180) * angle;
+        }
+
+        //*----------------------*
+        //Afval methods
+        //*----------------------*
+
+        private void timer_Tick4(object sender, EventArgs e)
+        {
+            Animation(waste);
+            if (y >= 400)
+            {
+                timer4.Stop();
+                y = 0;
+                CheckDrop();
+                NextWaste();
+                wasteBin.dropWasteCanvas.Children.Clear();
+            }
+        }
+
+        private void waste_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dragging = true;
+            waste = (WasteControl)sender;
+        }
+
+        private void wasteBin_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            wasteBin = (BinControl)sender;
+            if (dragging)
+            {
+                wastePanel.Children.Clear();
+                WasteControl copy = new WasteControl(waste.Image, waste.WasteType);
+                copy.Margin = new Thickness(20, y, 0, 0);
+                wasteBin.dropWasteCanvas.Children.Add(copy);
+                timer4.Start();
+            }
+        }
+
+        private void CheckDrop()
+        {
+            if (waste.WasteType.Equals(wasteBin.WasteBinType))
+            {
+                correct++;
+                MessageBox.Show("Correct");
+            }
+            else
+            {
+                MessageBox.Show("Fout! Het afval had bij " + waste.WasteType + " gemoeten.");
+            }
+        }
+
+        private void Animation(WasteControl currWaste)
+        {
+            y += 10;
+            WasteControl copy = new WasteControl(waste.Image, waste.WasteType);
+            wasteBin.dropWasteCanvas.Children.Clear();
+            currWaste.Margin = new Thickness(20, y, 0, 0);
+            wasteBin.dropWasteCanvas.Children.Add(currWaste);
+        }
+
+        private void FillCanvas(Canvas canvas)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                wasteBin = new BinControl("Resources/Images/Wastebin/" + (i + 1) + ".png");
+                wasteBin.MouseUp += wasteBin_MouseUp;
+                wasteBin.Margin = new Thickness(i * 130, 0, 0, 0);
+                canvas.Children.Add(wasteBin);
+            }
+        }
+
+        private void NextWaste()
+        {
+            if (counter <= 10)
+            {
+                getWaste = randomWasteList[counter];
+                waste = new WasteControl(getWaste.Name, getWaste.Type);
+                waste.MouseDown += waste_MouseDown;
+
+                waste.Margin = new Thickness(25, 25, 0, 0);
+              
+                wastePanel.Children.Add(waste);
+                counter++;
+            }
+        }
+        private void Waste_DragLeave(object sender, System.EventArgs e)
+        {
+            dragging = false;
+
+        }
+        private void wasteCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            dragging = false;
         }
     }
 }

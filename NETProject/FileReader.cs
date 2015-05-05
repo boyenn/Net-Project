@@ -12,8 +12,9 @@ namespace NETProject
         private static StreamReader inputStream = null;
         private Country country;
         private Word word;
-        private User user;
+       // private User user;
         private Zin zin;
+        private Waste waste;
 
         public FileReader()
         {
@@ -44,7 +45,10 @@ namespace NETProject
                             list.Add(country);
                             break;
 
-                        
+                        case "NETProject.Waste":
+                            waste = new Waste("Resources/Images/Waste/" + words[i++] + ".png", words[i]);
+                            list.Add(waste);
+                            break;
 
                         case "NETProject.Word":
                             word = new Word(words[i++], words[i++], Convert.ToInt32(words[i]));

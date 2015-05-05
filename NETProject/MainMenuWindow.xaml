@@ -65,18 +65,18 @@
                         <Button x:Name="_Check" Content="Controleer" HorizontalAlignment="Left" Margin="432,289,0,0" VerticalAlignment="Top" Width="75" Click="Check_Click"/>
                         <Button x:Name="_New" Content="Nieuw" HorizontalAlignment="Left" Margin="352,289,0,0" VerticalAlignment="Top" Width="75" Click="New_Click"/>
                     </Grid>
-                    <Grid x:Name="zinnenGrid" Margin="310,184,0,-14" Visibility="Hidden" >
+                    <Grid x:Name="zinnenGrid" Margin="310,184,0,-14"  Visibility="Hidden" >
                         <TextBox x:Name="zinTextBox"  HorizontalAlignment="Left" BorderThickness="0" Height="31" IsReadOnly="True" TextWrapping="Wrap" Text="Dit is een voorbeeld zin" VerticalAlignment="Top" Width="576" BorderBrush="White" FontWeight="Bold" FontSize="18" PreviewMouseUp="zinTextBox_PreviewMouseUp" Margin="85,64,0,0"/>
                         <Button x:Name="checkButton" Content="Controleer" HorizontalAlignment="Left" Margin="85,156,0,0" VerticalAlignment="Top" Width="240" Click="checkButton_Click" Height="25" RenderTransformOrigin="0.594,-0.744"/>
                         <TextBox x:Name="antwoordTextBox" HorizontalAlignment="Left" Height="23" Margin="85,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
                         <Label Content="Klik op het foute woord en verbeter het:" HorizontalAlignment="Left" Margin="85,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.23,0.423" FontSize="10"/>
                         <Label Content="Zin:" HorizontalAlignment="Left" Margin="42,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.759,1.115"/>
                         <Label Content="Correctie:" HorizontalAlignment="Left" Margin="15,100,0,0" VerticalAlignment="Top"/>
-                        <Label Content="Vraag:" HorizontalAlignment="Left" Margin="670,299,0,0" VerticalAlignment="Top" Height="33" Width="70" FontSize="16"/>
-                        <Label x:Name="questionSentenceLabel" Content="" HorizontalAlignment="Left" Margin="740,299,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                        <Label Content="Vraag:" HorizontalAlignment="Left" Margin="368,120,0,0" VerticalAlignment="Top" Height="34" Width="70" FontSize="16"/>
+                        <Label x:Name="questionSentenceLabel" Content="" HorizontalAlignment="Left" Margin="438,120,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
 
                     </Grid>
-                    <Grid x:Name="breukenGrid" Margin="310,184,0,-14" >
+                    <Grid x:Name="breukenGrid" Margin="310,184,0,-14" Visibility="Hidden">
                         <Label Content="Vereenvoudig indien mogelijk:" HorizontalAlignment="Left" Margin="42,265,0,0" VerticalAlignment="Top"/>
                         <Label x:Name="lbl2" Content="" HorizontalAlignment="Left" Margin="19,137,0,0" VerticalAlignment="Top" Height="65" Width="96" FontSize="36"/>
                         <TextBox x:Name="txtAnswer" HorizontalAlignment="Left" Height="35" Margin="42,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" FontSize="18"/>
@@ -92,7 +92,12 @@
                         </Canvas>
 
                     </Grid>
-                   
+
+                    <Grid x:Name="afvalGrid" Margin="176,87,0,0" >
+                        <Canvas x:Name="wasteCanvas" HorizontalAlignment="Left" Height="580" Margin="155,-9,0,0" VerticalAlignment="Top" Width="650" Panel.ZIndex="1"/>
+                        <StackPanel x:Name="wastePanel" HorizontalAlignment="Left" Height="180" VerticalAlignment="Top" Width="180"/>
+                    </Grid>
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="manageTab" Header="TabItem">

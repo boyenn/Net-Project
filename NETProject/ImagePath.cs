@@ -18,8 +18,12 @@ namespace NETProject
                 x = new Uri(Path.GetFullPath(relativepath), UriKind.Absolute);
                 return new BitmapImage(x);
             }
-            catch(FileNotFoundException ex) { 
+            catch (FileNotFoundException ex)
+            {
                 
+            }
+            catch (DirectoryNotFoundException ex) { 
+            
             }
             return null;
         }

@@ -84,3 +84,7 @@ C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\FlagControl.baml
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\FlagControl.g.cs
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\BalloonQuestion.baml
 C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\BalloonQuestion.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\BinControl.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\WasteControl.baml
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\BinControl.g.cs
+C:\Users\Thijs\Desktop\Net-Project\NETProject\obj\Debug\WasteControl.g.cs
